@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular 'gc_bias', 'gc_biases'
+  inflect.irregular 'base_bias', 'base_biases'
+  inflect.irregular 'gcbias', 'gcbiases'
+  inflect.irregular 'basebias', 'basebiases'
+end

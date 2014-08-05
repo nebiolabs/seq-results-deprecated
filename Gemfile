@@ -11,7 +11,6 @@ gem 'haml-rails'
 gem 'zurb-foundation'
 gem 'compass-rails', '~> 1.1.0'
 gem 'simple_form'
-gem 'jquery-ui-rails'
 
 group :test do
   gem 'rspec-rails'
@@ -23,5 +22,4 @@ end
 
 group :test, :development do
   gem 'pry-rails'
-  gem 'fuubar'
 end
