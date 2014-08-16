@@ -13,6 +13,7 @@ gem 'compass-rails', '~> 1.1.0'
 gem 'simple_form'
 gem 'composite_primary_keys', '~> 7.0.10'
 gem 'handlebars_assets'
+gem 'underscore-rails'
 
 group :test do
   gem 'rspec-rails'
