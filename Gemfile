@@ -8,9 +8,11 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'zurb-foundation'
+gem 'foundation-rails'
 gem 'compass-rails', '~> 1.1.0'
 gem 'simple_form'
+gem 'composite_primary_keys', '~> 7.0.10'
+gem 'handlebars_assets'
 
 group :test do
   gem 'rspec-rails'

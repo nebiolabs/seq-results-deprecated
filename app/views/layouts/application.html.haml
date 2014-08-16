@@ -1,0 +1,41 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "NEB Experiments"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tags
+  %body
+    %nav.top-bar{"data-topbar" => ""}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{:href => "#"} My Site
+      %section.top-bar-section
+        %ul.right
+          %li.active
+            %a{:href => "#"} Right Button Active
+          %li.has-dropdown
+            %a{:href => "#"} Right Button Dropdown
+            %ul.dropdown
+              %li
+                %a{:href => "#"} First link in dropdown
+        %ul.left
+          %li
+            %a{:href => "#"} Left Nav Button
+
+    %nav.breadcrumbs
+      %a{:href => "#"} Home
+      %a{:href => "#"} Features
+      %a.unavailable{:href => "#"} Gene Splicing
+      %a.current{:href => "#"} Cloning
+
+    -# start of body
+    .row
+      .large-6.columns#right-columns
+      .large-6.columns#left-columns
+
+    = yield
+    = javascript_include_tag "application"
