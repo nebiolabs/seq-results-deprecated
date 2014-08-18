@@ -1,12 +1,14 @@
 BioProjects.Views.Page = function(){
   this.form = new BioProjects.Views.Form('#form-side');
   this.table = new BioProjects.Views.Table('#table-side');
+  this.$header = $('h2', '#header');
 
   this.initializePage = function(){
     this.table.$el.addClass('large-12');
 
     // refactor
     new BioProjects.Collections.Runs(this);
+    this.$header.html('Runs')
   };
 
   this.addForm = function(dataObject, template){
