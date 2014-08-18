@@ -1,0 +1,17 @@
+.row
+  .columns#form-side
+  %table.columns#table-side
+    %thead
+      %tr
+        %th ID
+        %th Name
+        %th Date
+        %th Instrument
+        %th Instrument Type
+    %tbody
+    %tfoot
+
+:javascript
+  $( document ).ready(function() {
+    new BioProjects.Views.Page();
+  });

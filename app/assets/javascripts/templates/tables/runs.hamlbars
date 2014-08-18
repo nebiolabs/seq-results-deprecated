@@ -1,0 +1,8 @@
+{{#each collection}}
+%tr{id: 'run-{{this.id}}'}
+  %td {{this.id}}
+  %td {{this.name}}
+  %td {{this.date}}
+  %td {{this.instrument}}
+  %td {{this.instrument_type}}
+{{/each}}

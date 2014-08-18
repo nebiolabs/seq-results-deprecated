@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'runs#index'
+  root 'static#index'
+
+  resources :runs, only: [:index, :show, :update]
 end
