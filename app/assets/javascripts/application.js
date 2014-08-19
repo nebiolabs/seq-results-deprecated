@@ -16,9 +16,6 @@
 //= require foundation
 
 //= require handlebars.runtime
-//= require_tree ./templates
-//= require bio_projects
-//= require_tree ./views
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

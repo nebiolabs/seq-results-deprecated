@@ -173,7 +173,7 @@ DEPENDENCIES
   launchy
   pg
   pry-rails
-  rails
+  rails (~> 4.1.4)
   rspec-rails
   sass-rails
   shoulda-matchers

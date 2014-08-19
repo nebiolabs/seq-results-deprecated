@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 4.1.4'
 gem 'pg'
 # gem 'unicorn'
 # web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
