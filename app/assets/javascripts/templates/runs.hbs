@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <table class='table'>
+        <thead>
+        <tr><th>Recent Runs</th></tr>
+        </thead>
+
+        <tbody>
+        {{#each}}
+          <tr>
+            <td>
+              {{name}}
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="span9">
+      {{outlet}}
+    </div>
+  </div>
+</div>

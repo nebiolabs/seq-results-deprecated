@@ -1,5 +1,5 @@
 BioProjects.Store = DS.Store.extend({
-
+  adapter: "DS.RESTAdapter"
 });
 
 // Override the default adapter with the `DS.ActiveModelAdapter` which

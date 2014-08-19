@@ -1,0 +1,16 @@
+<div class="container">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">BioProjects</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>{{#link-to 'runs'}}Runs{{/link-to}}</li>
+        <li>{{#link-to 'readGroups'}}Read Groups{{/link-to}}</li>
+      </ul>
+    </div>
+  </nav>
+  {{ outlet }}
+</div>
+

@@ -10,11 +10,17 @@ class RunsController < ApplicationController
   end
 
   def create
-    respond_with Run.create(run_params)
+    @run = Run.create(run_params)
+    status = @run.errors.present? ? :unprocessable_entity : 200
+
+    respond_with @run, status: status
   end
 
   def update
-    Run.update(params[:id], run_params)
+    @run = Run.find(params[:id])
+    status = @run.update_attributes(run_params) ? 200 : :unprocessable_entity
+
+    respond_with @run, status: status
   end
 
   def destroy
