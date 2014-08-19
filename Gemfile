@@ -12,6 +12,7 @@ gem 'underscore-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.5.0'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'active_model_serializers'
 
 group :test do
   gem 'rspec-rails'

@@ -157,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   bootstrap-sass (~> 3.2.0)
   composite_primary_keys (~> 7.0.10)
   database_cleaner
