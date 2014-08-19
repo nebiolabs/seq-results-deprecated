@@ -11,6 +11,7 @@ gem 'composite_primary_keys', '~> 7.0.10'
 gem 'underscore-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.5.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 
 group :test do
   gem 'rspec-rails'

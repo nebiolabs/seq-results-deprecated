@@ -35,6 +35,8 @@ GEM
       ember-source
       execjs
       handlebars-source
+    bootstrap-sass (3.2.0.1)
+      sass (~> 3.2)
     builder (3.2.2)
     coderay (1.1.0)
     composite_primary_keys (7.0.10)
@@ -155,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.2.0)
   composite_primary_keys (~> 7.0.10)
   database_cleaner
   ember-rails
