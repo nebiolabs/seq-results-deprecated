@@ -14,9 +14,6 @@
 //= require jquery_ujs
 //= require underscore
 
-//= require handlebars.runtime
-//= require jquery
-//= require handlebars
 //= require ember
 //= require ember-data
 //= require_self
@@ -26,5 +23,3 @@
 BioProjects = Ember.Application.create();
 
 //= require_tree .
-
-$(function(){ $(document).foundation(); });
