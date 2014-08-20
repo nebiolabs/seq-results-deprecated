@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3">
+    <div class="col-md-6">
       <h3>
         <span class="label label-default">Runs</span>
         <span type="button" class="btn btn-primary">New Run</span>
@@ -19,19 +19,19 @@
 
         <tbody>
           {{#each}}
-            <tr>
+            {{#link-to 'run' this tagName="tr"}}
               <td>{{id}}</td>
               <td>{{name}}</td>
               <td>{{format-date date}}</td>
               <td>{{instrument}}</td>
               <td>{{instrument_type}}</td>
-            </tr>
+            {{/link-to}}
           {{/each}}
         </tbody>
       </table>
     </div>
 
-    <div class="span9">
+    <div class="col-md-6">
       {{outlet}}
     </div>
   </div>

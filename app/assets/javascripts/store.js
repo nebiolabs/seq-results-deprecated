@@ -1,4 +1,4 @@
-BioProjects.Store = DS.Store.extend({
+BioProjects.ApplicationStore = DS.Store.extend({
 });
 
 BioProjects.ApplicationAdapter = DS.ActiveModelAdapter.extend({

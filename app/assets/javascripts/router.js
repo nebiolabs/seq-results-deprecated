@@ -2,8 +2,8 @@
 
 BioProjects.Router.map(function() {
   this.resource("runs", function() {
-    this.resource("runs", {
-      path: ":runs_id"
+    this.resource("run", {
+      path: ":run_id"
     });
   });
 
