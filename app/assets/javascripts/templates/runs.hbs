@@ -3,7 +3,9 @@
     <div class="col-md-6">
       <h3>
         <span class="label label-default">Runs</span>
-        <span type="button" class="btn btn-primary">New Run</span>
+        {{#link-to 'runs.new'}}
+          <span type="button" class="btn btn-primary" >New Run</span>
+        {{/link-to}}
       </h3>
 
       <table class='table table-striped'>
