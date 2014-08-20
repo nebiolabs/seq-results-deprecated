@@ -1,3 +1,4 @@
-BioProjects.RunController = Ember.ObjectController.extend({
-  name: 'LOLZ'
+BioProjects.RunController = Ember.ArrayController.extend({
+  sortProperties: [ "id" ],
+  sortAscending: false
 });

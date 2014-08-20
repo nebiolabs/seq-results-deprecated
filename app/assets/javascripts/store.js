@@ -1,9 +1,6 @@
 BioProjects.Store = DS.Store.extend({
-  adapter: "DS.RESTAdapter"
 });
 
-// Override the default adapter with the `DS.ActiveModelAdapter` which
-// is built to work nicely with the ActiveModel::Serializers gem.
 BioProjects.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
 });

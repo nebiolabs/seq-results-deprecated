@@ -1,10 +1,8 @@
 BioProjects.RunsRoute = Ember.Route.extend({
   model: function() {
-    return junk;
-//    return BioProjects.Run.find();
+    return this.get('store').findAll('run');
+  },
+  setupController: function(controller, model) {
+    controller.set('model', model);
   }
 });
-
-var junk = [{
-  name: 'kevin'
-}];
