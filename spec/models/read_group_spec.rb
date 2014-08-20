@@ -7,6 +7,7 @@ describe ReadGroup do
   it { should have_many :base_biases }
   it { should have_many :coverage_depths }
   it { should have_many :bed_coverages }
+  it { should have_many :alignment_metrics }
 
   it { should validate_presence_of(:library) }
   it { should validate_presence_of(:barcode) }
