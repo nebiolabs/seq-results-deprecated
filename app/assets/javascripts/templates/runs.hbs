@@ -1,17 +1,30 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span3">
-      <table class='table'>
+      <h3>
+        <span class="label label-default">Runs</span>
+        <span type="button" class="btn btn-primary">New Run</span>
+      </h3>
+
+      <table class='table table-striped'>
         <thead>
-        <tr><th>Recent Runs</th></tr>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Instrument</th>
+            <th>Instrument Type</th>
+          </tr>
         </thead>
 
         <tbody>
           {{#each}}
             <tr>
-              <td>
-                {{name}}
-              </td>
+              <td>{{id}}</td>
+              <td>{{name}}</td>
+              <td>{{format-date date}}</td>
+              <td>{{instrument}}</td>
+              <td>{{instrument_type}}</td>
             </tr>
           {{/each}}
         </tbody>

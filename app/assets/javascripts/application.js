@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require handlebars
+//= require moment
 //= require ember
 //= require ember-data
 //= require_self

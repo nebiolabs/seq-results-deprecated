@@ -2,7 +2,7 @@ class RunsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Run.all
+    respond_with Run.all.order(:id)
   end
 
   def show
