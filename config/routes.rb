@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'static#index'
 
   resources :runs
+  resources :read_groups, except: [:index]
 end

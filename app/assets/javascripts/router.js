@@ -2,13 +2,9 @@
 
 BioProjects.Router.map(function() {
   this.resource("runs", function() {
-    this.resource("run", {
-      path: ":run_id"
+    this.resource("run", { path: "/:run_id"}, function(){
     });
     this.route("new");
   });
-
-  this.resource("readGroups", function() {
-
-  });
+  this.resource("read_groups", {path: '/runs/:run_id/read_groups'});
 });

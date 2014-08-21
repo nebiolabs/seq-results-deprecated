@@ -2,4 +2,8 @@
   {{partial 'runs/edit'}}
   <button class="btn btn-success" {{action 'saveRun'}}>Done</button>
   <button class="btn btn-danger" {{action 'deleteRun'}}>Delete</button>
+
+  {{#link-to 'read_groups' id class='btn btn-default'}}
+    Read Groups
+  {{/link-to}}
 </div>

@@ -6,21 +6,21 @@ class RunsController < ApplicationController
   end
 
   def show
-    respond_with Run.find(params[:id])
+    render json: Run.find(params[:id]), include: [:read_groups]
   end
 
   def create
-    @run = Run.create(run_params)
-    status = @run.errors.present? ? :unprocessable_entity : 200
+    run = Run.create(run_params)
+    status = run.errors.present? ? :unprocessable_entity : 200
 
-    respond_with @run, status: status
+    respond_with run, status: status
   end
 
   def update
-    @run = Run.find(params[:id])
+    run = Run.find(params[:id])
     status = @run.update_attributes(run_params) ? 200 : :unprocessable_entity
 
-    respond_with @run, status: status
+    respond_with run, status: status
   end
 
   def destroy
@@ -29,6 +29,6 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:name, :date, :instrument, :instrument_type)
+    params.require(:run).permit(:library, :barcode, :sample)
   end
 end
