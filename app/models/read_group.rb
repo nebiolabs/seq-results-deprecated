@@ -11,5 +11,4 @@ class ReadGroup < ActiveRecord::Base
   validates_presence_of :library
   validates_presence_of :barcode
   validates_presence_of :sample
-  validates_presence_of :project
 end

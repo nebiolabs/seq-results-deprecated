@@ -12,5 +12,4 @@ describe ReadGroup do
   it { should validate_presence_of(:library) }
   it { should validate_presence_of(:barcode) }
   it { should validate_presence_of(:sample) }
-  it { should validate_presence_of(:project) }
 end

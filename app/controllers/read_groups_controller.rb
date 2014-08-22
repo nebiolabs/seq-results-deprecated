@@ -36,6 +36,6 @@ class ReadGroupsController < ApplicationController
 
   private
   def read_group_params
-    params.require(:read_group).permit(:library, :barcode, :sample)
+    params.require(:read_group).permit(:library, :barcode, :sample, :run_id)
   end
 end

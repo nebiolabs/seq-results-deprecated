@@ -1,7 +1,9 @@
-BioProjects.RunsNewController = Ember.ObjectController.extend({
+BioProjects.ReadGroupsNewController = Ember.ObjectController.extend({
+  needs: "run",
+  run: Ember.computed.alias("controllers.run"),
   actions: {
     create: function(){
-      this.get('model').save();
+      this.model.save();
     }
   }
 });
