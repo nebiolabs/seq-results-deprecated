@@ -1,9 +1,5 @@
 <div class="form-container">
-  {{partial 'runs/edit'}}
+  {{partial 'read_groups/edit'}}
   <button class="btn btn-success" {{action 'save'}}>Done</button>
   <button class="btn btn-danger" {{action 'delete'}}>Delete</button>
-
-  {{#link-to 'read_groups' id class='btn btn-default'}}
-    Read Groups
-  {{/link-to}}
 </div>

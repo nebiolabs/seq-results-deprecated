@@ -4,7 +4,13 @@ BioProjects.RunsNewRoute = Ember.Route.extend({
       date: new Date()
     })
   },
-  setupController: function(controller, model) {
-    controller.set('model', model);
+  actions: {
+    willTransition: function(transition) {
+      var run = this.controller.get('model');
+      if (run.get('isDirty')) {
+        run.deleteRecord();
+        run.save();
+      }
+    }
   }
 });

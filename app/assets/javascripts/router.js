@@ -6,5 +6,9 @@ BioProjects.Router.map(function() {
     });
     this.route("new");
   });
-  this.resource("read_groups", {path: '/runs/:run_id/read_groups'});
+
+  this.resource("read_groups", {path: 'runs/:run_id/read_groups'}, function(){
+    this.resource("read_group", { path: "/:read_group_id"});
+  });
+
 });

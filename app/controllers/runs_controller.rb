@@ -2,7 +2,7 @@ class RunsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Run.all.order(:id)
+    respond_with Run.all.order(:id).includes(:read_groups)
   end
 
   def show
@@ -18,7 +18,7 @@ class RunsController < ApplicationController
 
   def update
     run = Run.find(params[:id])
-    status = @run.update_attributes(run_params) ? 200 : :unprocessable_entity
+    status = run.update_attributes(run_params) ? 200 : :unprocessable_entity
 
     respond_with run, status: status
   end
@@ -29,6 +29,6 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:library, :barcode, :sample)
+    params.require(:run).permit(:name, :date, :instrument, :instrument_type)
   end
 end

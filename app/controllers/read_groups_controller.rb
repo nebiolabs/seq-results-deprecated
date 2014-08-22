@@ -1,17 +1,23 @@
 class ReadGroupsController < ApplicationController
   respond_to :json
 
-  # def index
-  #   run = Run.find(params[:run_id])
-  #   respond_with run.read_groups
-  # end
+  def index
+    if params[:run_id].present?
+      run = Run.find(params[:run_id])
+      read_groups = run.read_groups.order(:id)
+    else
+      read_groups = []
+    end
+
+    respond_with read_groups
+  end
 
   def show
     respond_with ReadGroup.find(params[:id])
   end
 
   def create
-    read_group = ReadGroup.create(run_group_params)
+    read_group = ReadGroup.create(read_group_params)
     status = read_group.errors.present? ? :unprocessable_entity : 200
 
     respond_with read_group, status: status
@@ -19,7 +25,7 @@ class ReadGroupsController < ApplicationController
 
   def update
     read_group = ReadGroup.find(params[:id])
-    status = read_group.update_attributes(run_group_params) ? 200 : :unprocessable_entity
+    status = read_group.update_attributes(read_group_params) ? 200 : :unprocessable_entity
 
     respond_with read_group, status: status
   end
@@ -30,6 +36,6 @@ class ReadGroupsController < ApplicationController
 
   private
   def read_group_params
-    params.require(:read_group).permit(:name, :date, :instrument, :instrument_type)
+    params.require(:read_group).permit(:library, :barcode, :sample)
   end
 end
