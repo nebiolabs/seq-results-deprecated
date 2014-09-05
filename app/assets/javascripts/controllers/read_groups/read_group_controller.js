@@ -9,6 +9,18 @@ BioProjects.ReadGroupController = Ember.ObjectController.extend({
         this.get('model').save();
         this.transitionToRoute('readGroups.index')
       }
+    },
+    deleteModel: function(modelStr){
+      var readGroupID = this.get('model').id;
+      $.ajax({
+        url: '/read_groups/'+readGroupID+'/entity',
+        type: 'POST',
+        data: {class: modelStr},
+        success: function() {
+        },
+        fail: function(){
+        }
+      })
     }
   }
 });

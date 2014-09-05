@@ -1,17 +1,18 @@
+<ol class="breadcrumb">
+  <li>{{#link-to 'runs'}}Runs{{/link-to}}</li>
+  <li>{{#link-to 'read_groups'}}Read Groups{{/link-to}}</li>
+</ol>
+
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="col-md-6">
       <h3>
         <span class="label label-default">Read Groups</span>
-        {{#link-to 'read_groups.new'}}
-          <span type="button" class="btn btn-primary" >New Read Group</span>
-        {{/link-to}}
       </h3>
 
       <table class='table table-striped'>
         <thead>
         <tr>
-          <th>#</th>
           <th>Library</th>
           <th>Barcode</th>
           <th>Sample</th>
@@ -21,7 +22,6 @@
         <tbody>
           {{#each}}
             {{#link-to 'read_group' this tagName="tr"}}
-              <td>{{id}}</td>
               <td>{{library}}</td>
               <td>{{barcode}}</td>
               <td>{{sample}}</td>

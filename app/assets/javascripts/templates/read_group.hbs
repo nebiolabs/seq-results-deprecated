@@ -2,4 +2,13 @@
   {{partial 'read_groups/edit'}}
   <button class="btn btn-success" {{action 'save'}}>Done</button>
   <button class="btn btn-danger" {{action 'delete'}}>Delete</button>
+
+  <button class="btn btn-default" {{action 'deleteModel' 'gc_biases'}}>Delete GC Biases ({{gc_biases_count}})</button>
+  <button class="btn btn-default" {{action 'deleteModel' 'insert_sizes'}}>Delete Insert Sizes ({{insert_sizes_count}})</button>
+  <button class="btn btn-default" {{action 'deleteModel' 'base_biases'}}>Delete Base Biases ({{base_biases_count}})</button>
+  <button class="btn btn-default" {{action 'deleteModel' 'coverage_depths'}}>Delete Coverage Depths ({{coverage_depths_count}})</button>
+  <button class="btn btn-default" {{action 'deleteModel' 'bed_coverages'}}>Delete Bed Coverages ({{bed_coverages_count}})</button>
+  <button class="btn btn-default" {{action 'deleteModel' 'duplicate_reads'}}>Delete Duplicate Reads ({{duplicate_reads_count}})</button>
+  <button class="btn btn-default" {{action 'deleteModel' 'alignment_metrics'}}>Delete Alignment Metrics ({{alignment_metrics_count}})</button>
+
 </div>
