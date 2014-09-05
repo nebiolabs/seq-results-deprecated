@@ -16,7 +16,8 @@ class ReadGroupSerializer < ActiveModel::Serializer
              :bed_coverages_count,
              :duplicate_reads_count,
              :alignment_metrics_count,
-             :library_complexities_count
+             :library_complexities_count,
+             :duplicate_groups_count
 
   has_one :run
 end

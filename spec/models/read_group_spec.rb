@@ -6,6 +6,8 @@ describe ReadGroup do
   it { should have_many :insert_sizes }
   it { should have_many :base_biases }
   it { should have_many :coverage_depths }
+  it { should have_many :duplicate_reads }
+  it { should have_many :duplicate_groups }
   it { should have_many :bed_coverages }
   it { should have_many :alignment_metrics }
   it { should have_many :library_complexities }

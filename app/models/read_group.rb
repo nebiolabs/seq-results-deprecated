@@ -6,6 +6,7 @@ class ReadGroup < ActiveRecord::Base
   has_many :coverage_depths, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :bed_coverages, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :duplicate_reads, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
+  has_many :duplicate_groups, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :alignment_metrics, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :library_complexities, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
 
@@ -35,6 +36,10 @@ class ReadGroup < ActiveRecord::Base
 
   def duplicate_reads_count
     duplicate_reads.count
+  end
+
+  def duplicate_groups_count
+    duplicate_groups.count
   end
 
   def alignment_metrics_count
