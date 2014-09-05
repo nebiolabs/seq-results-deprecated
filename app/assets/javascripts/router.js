@@ -10,7 +10,3 @@ BioProjects.Router.map(function() {
     this.resource("read_group", { path: "/:read_group_id"});
   });
 });
-
-//BioProjects.Router.reopen({
-//  rootURL: '/runs/'
-//});

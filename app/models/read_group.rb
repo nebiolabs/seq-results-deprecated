@@ -7,6 +7,7 @@ class ReadGroup < ActiveRecord::Base
   has_many :bed_coverages, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :duplicate_reads, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :alignment_metrics, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
+  has_many :library_complexities, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
 
   validates_presence_of :library
   validates_presence_of :barcode
@@ -38,5 +39,9 @@ class ReadGroup < ActiveRecord::Base
 
   def alignment_metrics_count
     alignment_metrics.count
+  end
+
+  def library_complexities_count
+    library_complexities.count
   end
 end
