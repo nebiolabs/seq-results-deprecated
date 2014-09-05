@@ -14,39 +14,13 @@ class ReadGroup < ActiveRecord::Base
   validates_presence_of :barcode
   validates_presence_of :sample
 
-  def gc_biases_count
-    gc_biases.count
-  end
-
-  def insert_sizes_count
-    insert_sizes.count
-  end
-
-  def base_biases_count
-    base_biases.count
-  end
-
-  def coverage_depths_count
-    coverage_depths.count
-  end
-
-  def bed_coverages_count
-    bed_coverages.count
-  end
-
-  def duplicate_reads_count
-    duplicate_reads.count
-  end
-
-  def duplicate_groups_count
-    duplicate_groups.count
-  end
-
-  def alignment_metrics_count
-    alignment_metrics.count
-  end
-
-  def library_complexities_count
-    library_complexities.count
+  def association_meta_data
+    ReadGroup.reflect_on_all_associations(:has_many).map do |reflection|
+      {
+        class_name: reflection.plural_name,
+        count: self.send(reflection.plural_name).count,
+        button_text: "Delete #{reflection.plural_name.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
+      }
+    end
   end
 end

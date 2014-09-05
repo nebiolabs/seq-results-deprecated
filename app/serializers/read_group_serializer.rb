@@ -9,15 +9,7 @@ class ReadGroupSerializer < ActiveModel::Serializer
              :pcr_yield_ng, :pcr_conc_nm, :pcr_volume_ul, :notebook_location,
              :pre_denaturation_buffer,
 
-             :gc_biases_count,
-             :insert_sizes_count,
-             :base_biases_count,
-             :coverage_depths_count,
-             :bed_coverages_count,
-             :duplicate_reads_count,
-             :alignment_metrics_count,
-             :library_complexities_count,
-             :duplicate_groups_count
+             :association_meta_data
 
   has_one :run
 end

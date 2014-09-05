@@ -31,13 +31,5 @@ BioProjects.ReadGroup = DS.Model.extend({
   notebook_location: DS.attr('string'),
   pre_denaturation_buffer: DS.attr('string'),
 
-  gc_biases_count: DS.attr('number'),
-  insert_sizes_count: DS.attr('number'),
-  base_biases_count: DS.attr('number'),
-  coverage_depths_count: DS.attr('number'),
-  bed_coverages_count: DS.attr('number'),
-  duplicate_groups_count: DS.attr('number'),
-  duplicate_reads_count: DS.attr('number'),
-  alignment_metrics_count: DS.attr('number'),
-  library_complexities_count: DS.attr('number')
+  association_meta_data: DS.attr()
 });
