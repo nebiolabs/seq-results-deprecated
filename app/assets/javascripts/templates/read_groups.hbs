@@ -10,6 +10,21 @@
         <span class="label label-default">Read Groups</span>
       </h3>
 
+      <ul class="nav nav-tabs" role="tablist">
+        {{#link-to 'read_groups' tagName="li" href=false}}
+          <a href="#">Library Prep</a>
+        {{/link-to}}
+        {{#link-to 'runs' tagName="li" href=false}}
+          <a href="#">Shearing Info</a>
+        {{/link-to}}
+        {{#link-to 'read_groups' tagName="li" href=false}}
+          <a href="#">PCR Info</a>
+        {{/link-to}}
+        {{#link-to 'read_groups' tagName="li" href=false}}
+          <a href="#">Loading Info</a>
+        {{/link-to}}
+      </ul>
+
       <table class='table table-striped'>
         <thead>
         <tr>
