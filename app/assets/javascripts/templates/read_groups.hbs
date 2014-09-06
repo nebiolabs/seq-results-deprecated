@@ -11,39 +11,16 @@
       </h3>
 
       <ul class="nav nav-tabs" role="tablist">
-        {{#link-to 'read_groups' tagName="li" href=false}}
-          <a href="#">Library Prep</a>
-        {{/link-to}}
-        {{#link-to 'runs' tagName="li" href=false}}
-          <a href="#">Shearing Info</a>
-        {{/link-to}}
-        {{#link-to 'read_groups' tagName="li" href=false}}
-          <a href="#">PCR Info</a>
-        {{/link-to}}
-        {{#link-to 'read_groups' tagName="li" href=false}}
-          <a href="#">Loading Info</a>
-        {{/link-to}}
+        <li><a {{action 'showLibraryPrep'}}>Library Prep</a></li>
+        <li><a {{action 'showShearingInfo'}}>Shearing Info</a></li>
+        <li><a {{action 'showPCRInfo'}}>PCR Info</a></li>
+        <li><a {{action 'showLoadingInfo'}}>Loading Info</a></li>
       </ul>
 
-      <table class='table table-striped'>
-        <thead>
-        <tr>
-          <th>Library</th>
-          <th>Barcode</th>
-          <th>Sample</th>
-        </tr>
-        </thead>
-
-        <tbody>
-          {{#each}}
-            {{#link-to 'read_group' this tagName="tr"}}
-              <td>{{library}}</td>
-              <td>{{barcode}}</td>
-              <td>{{sample}}</td>
-            {{/link-to}}
-          {{/each}}
-        </tbody>
-      </table>
+      {{partial "read_groups/library_prep"}}
+      {{partial "read_groups/loading_info"}}
+      {{partial "read_groups/pcr_info"}}
+      {{partial "read_groups/shearing_info"}}
     </div>
 
     <div class="col-md-6">

@@ -1,0 +1,24 @@
+<table class='table table-striped' id="pcr-info-table" style="display:none;">
+  <thead>
+  <tr>
+    <th>pcr_cycles</th>
+    <th>pcr_annealing_sec</th>
+    <th>pcr_annealing_deg</th>
+    <th>pcr_extension_sec</th>
+    <th>pcr_extension_deg</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  {{#each}}
+    {{#link-to 'read_group' this tagName="tr"}}
+      <td>{{pcr_cycles}}</td>
+      <td>{{pcr_annealing_sec}}</td>
+      <td>{{pcr_annealing_deg}}</td>
+      <td>{{pcr_extension_sec}}</td>
+      <td>{{pcr_extension_deg}}</td>
+    {{/link-to}}
+  {{/each}}
+  </tbody>
+</table>

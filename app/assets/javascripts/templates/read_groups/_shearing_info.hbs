@@ -1,0 +1,22 @@
+<table class='table table-striped' id="shearing-info-table" style="display:none;">
+  <thead>
+  <tr>
+    <th>shearing_method</th>
+    <th>avg_insert_size</th>
+    <th>max_insert_size</th>
+    <th>min_insert_size</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  {{#each}}
+    {{#link-to 'read_group' this tagName="tr"}}
+      <td>{{shearing_method}}</td>
+      <td>{{avg_insert_size}}</td>
+      <td>{{max_insert_size}}</td>
+      <td>{{min_insert_size}}</td>
+    {{/link-to}}
+  {{/each}}
+  </tbody>
+</table>

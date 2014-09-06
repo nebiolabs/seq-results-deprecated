@@ -1,0 +1,22 @@
+<table class='table table-striped' id="loading-info-table" style="display:none;">
+  <thead>
+  <tr>
+    <th>start_library_nm</th>
+    <th>final_library_pm</th>
+    <th>naoh_stock_date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  {{#each}}
+    {{#link-to 'read_group' this tagName="tr"}}
+      <td>{{start_library_nm}}</td>
+      <td>{{final_library_pm}}</td>
+      <td>{{format-date naoh_stock_date}}</td>
+    {{/link-to}}
+  {{/each}}
+  </tbody>
+</table>
+
+
