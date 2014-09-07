@@ -1,4 +1,8 @@
 BioProjects.ReadGroupController = Ember.ObjectController.extend({
+
+  queryParams: ['form'],
+  form: null,
+
   actions: {
     save: function(){
       this.get('model').save();

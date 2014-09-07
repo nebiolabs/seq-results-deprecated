@@ -15,3 +15,7 @@ Ember.Handlebars.helper('debug', function(value, options) {
 
   debugger;
 });
+
+Ember.Handlebars.helper('equal?', function(v1, v2) {
+  return (v1 == v2)
+});

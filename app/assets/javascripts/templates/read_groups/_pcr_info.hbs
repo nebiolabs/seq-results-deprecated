@@ -12,7 +12,7 @@
   <tbody>
 
   {{#each}}
-    {{#link-to 'read_group' this tagName="tr"}}
+    {{#link-to 'read_group' this (query-params form="pcr-info-table") tagName="tr"}}
       <td>{{pcr_cycles}}</td>
       <td>{{pcr_annealing_sec}}</td>
       <td>{{pcr_annealing_deg}}</td>

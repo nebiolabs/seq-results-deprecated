@@ -1,56 +1,68 @@
-<label>Library</label>
-<p>{{input type="text" value=library class='form-control'}}</p>
 
-<label>Barcode</label>
-<p>{{input type="text" value=barcode class='form-control'}}</p>
+{{#if equal? form 'library-prep-table'}}
+  <label>Library</label>
+  <p>{{input type="text" value=library class='form-control'}}</p>
 
-<label>Sample</label>
-<p>{{input type="text" value=sample class='form-control'}}</p>
+  <label>Barcode</label>
+  <p>{{input type="text" value=barcode class='form-control'}}</p>
 
-<label>library_prep_method</label>
-<p>{{input type="text" value=library_prep_method class='form-control'}}</p>
+  <label>Sample</label>
+  <p>{{input type="text" value=sample class='form-control'}}</p>
 
-<label>input_ng</label>
-<p>{{input type="text" value=input_ng class='form-control'}}</p>
+  <label>library_prep_method</label>
+  <p>{{input type="text" value=library_prep_method class='form-control'}}</p>
 
-<label>shearing_method</label>
-<p>{{input type="text" value=shearing_method class='form-control'}}</p>
+  <label>input_ng</label>
+  <p>{{input type="text" value=input_ng class='form-control'}}</p>
 
-<label>avg_insert_size</label>
-<p>{{input type="text" value=avg_insert_size class='form-control'}}</p>
+  <label>notes</label>
+  <p>{{textarea value=notes class='form-control'}}</p>
+{{/if}}
 
-<label>max_insert_size</label>
-<p>{{input type="text" value=max_insert_size class='form-control'}}</p>
+{{#if equal? form 'shearing-info-table'}}
+  <label>shearing_method</label>
+  <p>{{input type="text" value=shearing_method class='form-control'}}</p>
 
-<label>min_insert_size</label>
-<p>{{input type="text" value=min_insert_size class='form-control'}}</p>
+  <label>avg_insert_size</label>
+  <p>{{input type="text" value=avg_insert_size class='form-control'}}</p>
 
-<label>notes</label>
-<p>{{textarea value=notes class='form-control'}}</p>
+  <label>max_insert_size</label>
+  <p>{{input type="text" value=max_insert_size class='form-control'}}</p>
 
-<label>pcr_cycles</label>
-<p>{{input type="text" value=pcr_cycles class='form-control'}}</p>
+  <label>min_insert_size</label>
+  <p>{{input type="text" value=min_insert_size class='form-control'}}</p>
+{{/if}}
 
-<label>pcr_annealing_sec</label>
-<p>{{input type="text" value=pcr_annealing_sec class='form-control'}}</p>
+{{#if equal? form 'pcr-info-table'}}
+  <label>pcr_cycles</label>
+  <p>{{input type="text" value=pcr_cycles class='form-control'}}</p>
 
-<label>pcr_annealing_deg</label>
-<p>{{input type="text" value=pcr_annealing_deg class='form-control'}}</p>
+  <label>pcr_annealing_sec</label>
+  <p>{{input type="text" value=pcr_annealing_sec class='form-control'}}</p>
 
-<label>pcr_extension_sec</label>
-<p>{{input type="text" value=pcr_extension_sec class='form-control'}}</p>
+  <label>pcr_annealing_deg</label>
+  <p>{{input type="text" value=pcr_annealing_deg class='form-control'}}</p>
 
-<label>pcr_extension_deg</label>
-<p>{{input type="text" value=pcr_extension_deg class='form-control'}}</p>
+  <label>pcr_extension_sec</label>
+  <p>{{input type="text" value=pcr_extension_sec class='form-control'}}</p>
 
-<label>start_library_nm</label>
-<p>{{input type="text" value=start_library_nm class='form-control'}}</p>
+  <label>pcr_extension_deg</label>
+  <p>{{input type="text" value=pcr_extension_deg class='form-control'}}</p>
+{{/if}}
 
-<label>final_library_pm</label>
-<p>{{input type="text" value=final_library_pm class='form-control'}}</p>
+{{#if equal? form 'loading-info-table'}}
+  <label>start_library_nm</label>
+  <p>{{input type="text" value=start_library_nm class='form-control'}}</p>
 
-<label>naoh_stock_date</label>
-<p>{{input type="text" value=naoh_stock_date class='form-control'}}</p>
+  <label>final_library_pm</label>
+  <p>{{input type="text" value=final_library_pm class='form-control'}}</p>
+
+  <label>naoh_stock_date</label>
+  <p>{{input type="text" value=naoh_stock_date class='form-control'}}</p>
+{{/if}}
+
+
+
 
 <label>pcr_yield_ng</label>
 <p>{{input type="text" value=pcr_yield_ng class='form-control'}}</p>
