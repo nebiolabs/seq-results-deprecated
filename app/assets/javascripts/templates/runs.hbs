@@ -15,6 +15,7 @@
             <th>Name</th>
             <th>Instrument</th>
             <th>Instrument Type</th>
+            <th>Read Groups</th>
           </tr>
         </thead>
 
@@ -24,6 +25,11 @@
               <td>{{name}}</td>
               <td>{{instrument}}</td>
               <td>{{instrument_type}}</td>
+              <td>
+                {{#link-to 'read_groups' this.id bubbles=false class='btn btn-default'}}
+                  Read Groups
+                {{/link-to}}
+              </td>
             {{/link-to}}
           {{/each}}
         </tbody>

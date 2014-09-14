@@ -1,8 +1,5 @@
 BioProjects.ReadGroupController = Ember.ObjectController.extend({
 
-  queryParams: ['form'],
-  form: null,
-
   actions: {
     save: function(){
       this.get('model').save();
@@ -14,17 +11,25 @@ BioProjects.ReadGroupController = Ember.ObjectController.extend({
         this.transitionToRoute('readGroups.index')
       }
     },
-    deleteModel: function(modelStr){
-      var readGroupID = this.get('model').id;
-      $.ajax({
-        url: '/read_groups/'+readGroupID+'/entity',
-        type: 'POST',
-        data: {class: modelStr},
-        success: function() {
-        },
-        fail: function(){
-        }
-      })
+    deleteModel: function(){
+      if (window.confirm("Are you sure you want to delete the check associations?")){
+        var checkedValues = $('input:checkbox:checked').map(function() {
+          return $(this).attr('class');
+        }).get();
+
+        var readGroupID = this.get('model').id;
+        $.ajax({
+          url: '/read_groups/'+readGroupID+'/entity',
+          type: 'POST',
+          data: {'associations[]': checkedValues},
+          context: this,
+          success: function() {
+            this.get('model').reload();
+          },
+          fail: function(){
+          }
+        })
+      }
     }
   }
 });

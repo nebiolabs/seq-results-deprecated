@@ -4,6 +4,13 @@
   <button class="btn btn-danger" {{action 'delete'}}>Delete</button>
 
   {{#each attribute in association_meta_data}}
-    <button class="btn btn-default" {{action 'deleteModel' attribute.class_name}}>{{attribute.button_text}} ({{attribute.count}})</button>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" {{bind-attr class="attribute.class_name"}} >
+        {{attribute.button_text}} ({{attribute.count}})
+      </label>
+    </div>
   {{/each}}
+
+  <button class="btn btn-default" {{action 'deleteModel'}}>Delete Check Associations</button>
 </div>

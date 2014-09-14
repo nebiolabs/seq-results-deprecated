@@ -2,19 +2,22 @@ class EntityController < ApplicationController
   respond_to :json
 
   def destroy_all
-    param_class = entity_params[:class].to_sym
-    if whitelist_classes.include?(param_class)
-      read_group = ReadGroup.find(entity_params[:read_group_id])
-      if read_group.send(param_class).destroy_all
+    read_group_id = entity_params[:read_group_id]
+    read_group = ReadGroup.find(read_group_id)
+
+    allowed_associations = entity_params[:associations].select do |association|
+      whitelist_classes.include?(association.to_sym)
+    end
+
+    allowed_associations.each do |association|
+      if read_group.send(association).destroy_all
         status = 200
       else
         status = 500
       end
-    else
-      status = 500
     end
 
-    render json: {class: param_class}.to_json, status: status
+    render json: {class: allowed_associations}.to_json, status: status
   end
 
   private
@@ -24,6 +27,6 @@ class EntityController < ApplicationController
   end
 
   def entity_params
-    params.permit(:class, :read_group_id)
+    params.permit(:read_group_id, :associations => [])
   end
 end

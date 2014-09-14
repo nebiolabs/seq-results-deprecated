@@ -1,23 +1,29 @@
 <table class='table table-striped' id="pcr-info-table" style="display:none;">
   <thead>
   <tr>
-    <th>pcr_cycles</th>
-    <th>pcr_annealing_sec</th>
-    <th>pcr_annealing_deg</th>
-    <th>pcr_extension_sec</th>
-    <th>pcr_extension_deg</th>
+    <th>Cycles</th>
+    <th>Annealing Sec</th>
+    <th>Annealing Deg</th>
+    <th>Extension Sec</th>
+    <th>Extension_Deg</th>
+    <th>Yield ng</th>
+    <th>Conc nm</th>
+    <th>Column ul</th>
   </tr>
   </thead>
 
   <tbody>
 
   {{#each}}
-    {{#link-to 'read_group' this (query-params form="pcr-info-table") tagName="tr"}}
+    {{#link-to 'read_group' this tagName="tr"}}
       <td>{{pcr_cycles}}</td>
       <td>{{pcr_annealing_sec}}</td>
       <td>{{pcr_annealing_deg}}</td>
       <td>{{pcr_extension_sec}}</td>
       <td>{{pcr_extension_deg}}</td>
+      <td>{{pcr_yield_ng}}</td>
+      <td>{{pcr_conc_nm}}</td>
+      <td>{{pcr_volumn_ul}}</td>
     {{/link-to}}
   {{/each}}
   </tbody>

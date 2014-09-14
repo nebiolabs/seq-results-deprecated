@@ -4,17 +4,18 @@
     <th>Library</th>
     <th>Barcode</th>
     <th>Sample</th>
-    <th>library_date</th>
-    <th>library_prep_method</th>
-    <th>input_ng</th>
-    <th>notes</th>
+    <th>Lib Date</th>
+    <th>Lib Prep Method</th>
+    <th>Input ng</th>
+    <th>Notes</th>
+    <th>Notebook Location</th>
   </tr>
   </thead>
 
   <tbody>
 
   {{#each}}
-    {{#link-to 'read_group' this (query-params form="library-prep-table") tagName="tr"}}
+    {{#link-to 'read_group' this tagName="tr"}}
       <td>{{library}}</td>
       <td>{{barcode}}</td>
       <td>{{sample}}</td>
@@ -22,6 +23,7 @@
       <td>{{library_prep_method}}</td>
       <td>{{input_ng}}</td>
       <td>{{notes}}</td>
+      <td>{{notebook_location}}</td>
     {{/link-to}}
   {{/each}}
   </tbody>

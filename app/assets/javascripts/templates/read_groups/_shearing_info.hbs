@@ -1,17 +1,17 @@
 <table class='table table-striped' id="shearing-info-table" style="display:none;">
   <thead>
   <tr>
-    <th>shearing_method</th>
-    <th>avg_insert_size</th>
-    <th>max_insert_size</th>
-    <th>min_insert_size</th>
+    <th>Shearing Method</th>
+    <th>Avg Insert Size</th>
+    <th>Max Insert Size</th>
+    <th>Min Insert Size</th>
   </tr>
   </thead>
 
   <tbody>
 
   {{#each}}
-    {{#link-to 'read_group' this (query-params form="shearing-info-table") tagName="tr"}}
+    {{#link-to 'read_group' this tagName="tr"}}
       <td>{{shearing_method}}</td>
       <td>{{avg_insert_size}}</td>
       <td>{{max_insert_size}}</td>
