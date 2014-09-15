@@ -1,6 +1,6 @@
 <div class="form-container">
   {{partial 'read_groups/edit'}}
-  <button class="btn btn-success" {{action 'save'}}>Done</button>
+  <button class="btn btn-success edit-model" {{action 'save'}}>Done</button>
   <button class="btn btn-danger" {{action 'delete'}}>Delete</button>
 
   {{#each attribute in association_meta_data}}
@@ -12,5 +12,5 @@
     </div>
   {{/each}}
 
-  <button class="btn btn-default" {{action 'deleteModel'}}>Delete Check Associations</button>
+  <button class="btn btn-default" {{action 'deleteModels'}}>Delete Check Associations</button>
 </div>

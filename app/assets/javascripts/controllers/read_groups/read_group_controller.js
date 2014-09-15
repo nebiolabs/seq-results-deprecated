@@ -2,7 +2,14 @@ BioProjects.ReadGroupController = Ember.ObjectController.extend({
 
   actions: {
     save: function(){
-      this.get('model').save();
+      var $saveButton = $('.edit-model');
+      $saveButton.css("background-color", "#CEEACE");
+      $saveButton.html("Saving");
+
+      this.get('model').save().then(function(){
+        $saveButton.css("background-color", '#5cb85c');
+        $saveButton.html("Done");
+      });
     },
     delete: function(){
       if (window.confirm("Are you sure you want to delete this run?")){
@@ -11,7 +18,7 @@ BioProjects.ReadGroupController = Ember.ObjectController.extend({
         this.transitionToRoute('readGroups.index')
       }
     },
-    deleteModel: function(){
+    deleteModels: function(){
       if (window.confirm("Are you sure you want to delete the check associations?")){
         var checkedValues = $('input:checkbox:checked').map(function() {
           return $(this).attr('class');
