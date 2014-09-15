@@ -34,6 +34,7 @@ BioProjects.ReadGroupController = Ember.ObjectController.extend({
             this.get('model').reload();
           },
           fail: function(){
+            alert("Something went wrong, contact the administrator");
           }
         })
       }
