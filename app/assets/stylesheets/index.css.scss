@@ -8,6 +8,7 @@
   font-weight: bold;
 }
 
+
 html, body {
   margin: 20px;
 }
@@ -20,4 +21,26 @@ html, body {
 
 .nav-tabs {
   font-size: 13px;
+}
+
+table {
+  /* cellspacing */
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+th {
+  /* This covers the th elements */
+}
+tr {
+  /* This covers the tr elements */
+}
+th, td {
+  /* cellpadding */
+  padding: 0;
+  height: 30px;
+}
+
+tr.active td{
+  background-color: rgb(208, 155, 44) !important;
 }

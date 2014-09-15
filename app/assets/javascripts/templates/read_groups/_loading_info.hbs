@@ -1,10 +1,8 @@
-<table class='table table-striped' id="loading-info-table" style="display:none;">
+<table class='table table-striped' id="loading-info-table-1" style="display:none;">
   <thead>
   <tr>
     <th>Start Lib nm</th>
     <th>Final Library pm</th>
-    <th>NaOH Stock Date</th>
-    <th>Pre Denaturation Buffer</th>
   </tr>
   </thead>
 
@@ -14,11 +12,29 @@
     {{#link-to 'read_group' this tagName="tr"}}
       <td>{{start_library_nm}}</td>
       <td>{{final_library_pm}}</td>
+    {{/link-to}}
+  {{/each}}
+  </tbody>
+</table>
+
+<table class='table table-striped' id="loading-info-table-2" style="display:none;">
+  <thead>
+  <tr>
+    <th>NaOH Stock Date</th>
+    <th>Pre Denaturation Buffer</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  {{#each}}
+    {{#link-to 'read_group' this tagName="tr"}}
       <td>{{format-date naoh_stock_date}}</td>
       <td>{{pre_denaturation_buffer}}</td>
     {{/link-to}}
   {{/each}}
   </tbody>
 </table>
+
 
 

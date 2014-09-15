@@ -1,4 +1,4 @@
-<table class='table table-striped' id="pcr-info-table" style="display:none;">
+<table class='table table-striped' id="pcr-info-table-1" style="display:none;">
   <thead>
   <tr>
     <th>Cycles</th>
@@ -6,9 +6,6 @@
     <th>Annealing Deg</th>
     <th>Extension Sec</th>
     <th>Extension_Deg</th>
-    <th>Yield ng</th>
-    <th>Conc nm</th>
-    <th>Column ul</th>
   </tr>
   </thead>
 
@@ -21,6 +18,24 @@
       <td>{{pcr_annealing_deg}}</td>
       <td>{{pcr_extension_sec}}</td>
       <td>{{pcr_extension_deg}}</td>
+    {{/link-to}}
+  {{/each}}
+  </tbody>
+</table>
+
+<table class='table table-striped' id="pcr-info-table-2" style="display:none;">
+  <thead>
+  <tr>
+    <th>Yield ng</th>
+    <th>Conc nm</th>
+    <th>Column ul</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  {{#each}}
+    {{#link-to 'read_group' this tagName="tr"}}
       <td>{{pcr_yield_ng}}</td>
       <td>{{pcr_conc_nm}}</td>
       <td>{{pcr_volumn_ul}}</td>
@@ -28,3 +43,4 @@
   {{/each}}
   </tbody>
 </table>
+
