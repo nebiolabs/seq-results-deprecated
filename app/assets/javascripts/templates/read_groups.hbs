@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-  <li>{{#link-to 'runs'}}Runs{{/link-to}}</li>
+  <li>{{#link-to 'runs'}}Run: {{run.name}}{{/link-to}}</li>
   <li>{{#link-to 'read_groups'}}Read Groups{{/link-to}}</li>
 </ol>
 
@@ -10,41 +10,26 @@
         <span class="label label-default">Read Groups</span>
       </h3>
 
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Library Prep <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a {{action 'showTable' '#library-prep-table-1'}}>Page 1</a></li>
-            <li><a {{action 'showTable' '#library-prep-table-2'}}>Page 2</a></li>
-          </ul>
-        </li>
-        <li><a {{action 'showTable' '#shearing-info-table'}}>Shearing Info</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            PCR Info <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a {{action 'showTable' '#pcr-info-table-1'}}>Page 1</a></li>
-            <li><a {{action 'showTable' '#pcr-info-table-2'}}>Page 2</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Loading Info <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a {{action 'showTable' '#loading-info-table-1'}}>Page 1</a></li>
-            <li><a {{action 'showTable' '#loading-info-table-2'}}>Page 2</a></li>
-          </ul>
-        </li>
-      </ul>
+      <table class='table table-striped' id="library-prep-table">
+        <thead>
+        <tr>
+          <th>Library</th>
+          <th>Barcode</th>
+          <th>Sample</th>
+        </tr>
+        </thead>
 
-      {{partial "read_groups/library_prep"}}
-      {{partial "read_groups/loading_info"}}
-      {{partial "read_groups/pcr_info"}}
-      {{partial "read_groups/shearing_info"}}
+        <tbody>
+        {{#each}}
+          {{#link-to 'read_group' this tagName="tr"}}
+            <td>{{library}}</td>
+            <td>{{barcode}}</td>
+            <td>{{sample}}</td>
+          {{/link-to}}
+        {{/each}}
+        </tbody>
+      </table>
+
     </div>
 
     <div class="col-md-6">

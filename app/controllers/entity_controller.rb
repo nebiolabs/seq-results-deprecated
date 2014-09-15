@@ -10,7 +10,7 @@ class EntityController < ApplicationController
     end
 
     allowed_associations.each do |association|
-      if read_group.send(association).destroy_all
+      if read_group.send(association).delete_all
         status = 200
       else
         status = 500

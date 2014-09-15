@@ -27,7 +27,7 @@
               <td>{{instrument_type}}</td>
               <td>
                 {{#link-to 'read_groups' this.id bubbles=false class='btn btn-default'}}
-                  Read Groups
+                  {{pluralize read_groups_count}}
                 {{/link-to}}
               </td>
             {{/link-to}}

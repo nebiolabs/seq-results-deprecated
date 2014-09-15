@@ -18,7 +18,7 @@ class ReadGroup < ActiveRecord::Base
     ReadGroup.reflect_on_all_associations(:has_many).map do |reflection|
       {
         class_name: reflection.plural_name,
-        count: self.send(reflection.plural_name).count,
+        count: self.send(reflection.plural_name).size,
         button_text: "Delete #{reflection.plural_name.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
       }
     end
