@@ -20,8 +20,13 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'simplecov'
 end
 
 group :test, :development do
   gem 'pry-rails'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
 end
