@@ -19,9 +19,9 @@
 //= require ember
 //= require ember-data
 //= require_self
-//= require ./bio_projects
+//= require seqresults.js
 
 // for more details see: http://emberjs.com/guides/application/
-BioProjects = Ember.Application.create();
+SeqResults = Ember.Application.create();
 
 //= require_tree .
