@@ -1,5 +1,15 @@
 <div class="form-container">
   {{partial 'read_groups/edit'}}
-  <button class="btn btn-success" {{action 'save'}}>Done</button>
-  <button class="btn btn-danger" {{action 'delete'}}>Delete</button>
+
+  <div class="custom-container">
+    {{#each attribute in association_meta_data}}
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" {{bind-attr class="attribute.class_name"}} >
+          {{attribute.button_text}} ({{attribute.count}})
+        </label>
+      </div>
+    {{/each}}
+    <button class="btn btn-default" {{action 'deleteModels'}}>Delete Check Associations</button>
+  </div>
 </div>

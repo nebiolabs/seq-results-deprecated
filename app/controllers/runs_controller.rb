@@ -9,13 +9,6 @@ class RunsController < ApplicationController
     render json: Run.find(params[:id]), include: [:read_groups]
   end
 
-  def create
-    run = Run.create(run_params)
-    status = run.errors.present? ? :unprocessable_entity : 200
-
-    respond_with run, status: status
-  end
-
   def update
     run = Run.find(params[:id])
     status = run.update_attributes(run_params) ? 200 : :unprocessable_entity

@@ -1,0 +1,67 @@
+.mts {margin-top: 10px;}
+
+.form-container {
+  margin-top: 50px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+
+html, body {
+  margin: 20px;
+}
+
+.btn-primary {
+  font-weight:bold;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.nav-tabs {
+  font-size: 13px;
+}
+
+table {
+  /* cellspacing */
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+th {
+}
+tr {
+  /* This covers the tr elements */
+}
+th, td {
+  padding: 0;
+  height: 30px;
+}
+
+tr.active td{
+  background-color: rgb(208, 155, 44) !important;
+}
+
+.input-group {
+  margin-bottom: 8px;
+}
+
+.input-group .form-control{
+  height: 30px !important;
+}
+
+.input-group-addon {
+  font-weight: bold;
+  color: #333333;
+}
+
+.custom-container {
+  padding: 12px 12px 7px 12px;
+  margin-bottom: 10px;
+}
+
+.nav > li > a{
+  padding: 10px 10px !important;
+}

@@ -1,8 +1,111 @@
-<label>Library</label>
-<p>{{input type="text" value=library class='form-control'}}</p>
+<div id="library-prep-form" class="custom-container">
+  <label>Library Prep</label>
+  <div class="input-group">
+    <span class="input-group-addon">Library</span>
+    {{input type="text" value=library class='form-control'}}
+  </div>
 
-<label>Barcode</label>
-<p>{{input type="text" value=barcode class='form-control'}}</p>
+  <div class="input-group">
+    <span class="input-group-addon">Barcode</span>
+    {{input type="text" value=barcode class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Sample</span>
+    {{input type="text" value=sample class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Library Prep Method</span>
+    {{input type="text" value=library_prep_method class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Input ng</span>
+    {{input type="text" value=input_ng class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Notes</span>
+    {{textarea value=notes class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Notebook Location</span>
+    {{input type="text" value=notebook_location class='form-control'}}
+  </div>
+</div>
 
-<label>Sample</label>
-<p>{{input type="text" value=sample class='form-control'}}</p>
+<div id="shearing-info-form" class="custom-container">
+  <label>Shearing Information</label>
+  <div class="input-group">
+    <span class="input-group-addon">Shearing Method</span>
+    {{input type="text" value=shearing_method class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Avg Insert Size</span>
+    {{input type="text" value=avg_insert_size class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Max Insert Size</span>
+    {{input type="text" value=max_insert_size class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Min Insert Size</span>
+    {{input type="text" value=min_insert_size class='form-control'}}
+  </div>
+</div>
+
+<div id="pcr-info-form" class="custom-container">
+  <label>PCR Information</label>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Cycles</span>
+    {{input type="text" value=pcr_cycles class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Annealing Sec</span>
+    {{input type="text" value=pcr_annealing_sec class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Annealing Deg</span>
+    {{input type="text" value=pcr_annealing_deg class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Extension Sec</span>
+    {{input type="text" value=pcr_extension_sec class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Extension Deg</span>
+      {{input type="text" value=pcr_extension_deg class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Yield ng</span>
+    {{input type="text" value=pcr_yield_ng class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Conc nm</span>
+    {{input type="text" value=pcr_conc_nm class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">PCR Volume ul</span>
+    {{input type="text" value=pcr_volume_ul class='form-control'}}
+  </div>
+</div>
+
+<div id="loading-info-form" class="custom-container">
+  <label>Loading Information</label>
+  <div class="input-group">
+    <span class="input-group-addon">Start Library nm</span>
+    {{input type="text" value=start_library_nm class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Final Library pm</span>
+    {{input type="text" value=final_library_pm class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Naoh Stock Date</span>
+    {{input type="text" value=naoh_stock_date class='form-control'}}
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Pre Denaturation Buffer</span>
+    {{input type="text" value=pre_denaturation_buffer class='form-control'}}
+  </div>
+
+  <button class="btn btn-success edit-model" {{action 'save'}}>Done</button>
+  <button class="btn btn-danger" {{action 'delete'}}>Delete</button>
+</div>
