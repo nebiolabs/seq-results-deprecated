@@ -1,2 +1,2 @@
-BioProjects.RunRoute = Ember.Route.extend({
+SeqResults.RunRoute = Ember.Route.extend({
 });

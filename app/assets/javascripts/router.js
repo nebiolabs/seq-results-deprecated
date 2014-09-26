@@ -1,6 +1,6 @@
 // For more information see: http://emberjs.com/guides/routing/
 
-BioProjects.Router.map(function() {
+SeqResults.Router.map(function() {
   this.resource("runs", function() {
     this.resource("run", { path: "/:run_id"}, function(){
     });

@@ -1,4 +1,4 @@
-BioProjects.RunsNewRoute = Ember.Route.extend({
+SeqResults.RunsNewRoute = Ember.Route.extend({
   model: function () {
     return this.store.createRecord('run', {
       date: new Date()

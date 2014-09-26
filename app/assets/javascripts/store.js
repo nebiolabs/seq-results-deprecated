@@ -1,10 +1,10 @@
-BioProjects.ApplicationStore = DS.Store.extend({
+SeqResults.ApplicationStore = DS.Store.extend({
 });
 
-BioProjects.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+SeqResults.ApplicationAdapter = DS.ActiveModelAdapter.extend({
 
 });
 
-BioProjects.ApplicationSerializer = DS.ActiveModelSerializer.extend({
+SeqResults.ApplicationSerializer = DS.ActiveModelSerializer.extend({
 
 });

@@ -1,3 +1,3 @@
-BioProjects.ApplicationController = Ember.Controller.extend(
+SeqResults.ApplicationController = Ember.Controller.extend(
   {}
 );

@@ -1,4 +1,4 @@
-BioProjects.RunController = Ember.ObjectController.extend({
+SeqResults.RunController = Ember.ObjectController.extend({
   actions: {
     save: function(){
       this.get('model').save();
