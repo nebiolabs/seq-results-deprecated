@@ -11,7 +11,7 @@ gem 'ember-source', '1.5.0'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'active_model_serializers'
 gem 'dotenv'
-gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'dotenv-deployment'
 
 group :test do
   gem 'rspec-rails'
@@ -33,5 +33,5 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'therubyracer', platforms: :ruby
-  gem 'uglifier'
+  gem 'uglifier', :require => 'uglifier'
 end
