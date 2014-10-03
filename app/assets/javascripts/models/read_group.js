@@ -26,6 +26,7 @@ BioProjects.ReadGroup = DS.Model.extend({
   pcr_volume_ul: DS.attr('number'),
   notebook_location: DS.attr('string'),
   pre_denaturation_buffer: DS.attr('string'),
+  project: DS.attr('string'),
 
   association_meta_data: DS.attr()
 });

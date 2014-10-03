@@ -1,7 +1,9 @@
 // For more information see: http://emberjs.com/guides/routing/
 
 BioProjects.Router.map(function() {
-  this.resource("runs", { path: '/' }, function() {
+  this.resource("projects", { path: '/' });
+
+  this.resource("runs", { path: 'runs/:project_id' }, function() {
     this.resource("run", { path: "runs/:run_id"})
   });
 

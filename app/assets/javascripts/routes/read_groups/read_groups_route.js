@@ -7,5 +7,6 @@ BioProjects.ReadGroupsRoute = Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('run', this.get('run'));
     controller.set('model', model);
+    controller.set('project_id', model.content[0]._data.project);
   }
 });
