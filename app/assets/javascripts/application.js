@@ -18,6 +18,8 @@
 //= require moment
 //= require ember
 //= require ember-data
+//= require dataTables.bootstrap
+//= require jquery.dataTables.min
 //= require_self
 //= require ./bio_projects
 
