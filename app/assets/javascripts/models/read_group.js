@@ -1,4 +1,4 @@
-BioProjects.ReadGroup = DS.Model.extend({
+SeqResults.ReadGroup = DS.Model.extend({
   run: DS.belongsTo('run', { async: true }),
 
   library: DS.attr('string'),

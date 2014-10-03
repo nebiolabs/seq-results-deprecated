@@ -1,4 +1,4 @@
-BioProjects.Run = DS.Model.extend({
+SeqResults.Run = DS.Model.extend({
   readGroups: DS.hasMany('readGroup', { async: true }),
 
   name: DS.attr('string'),

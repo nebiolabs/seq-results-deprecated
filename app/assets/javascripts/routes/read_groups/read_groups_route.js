@@ -1,4 +1,4 @@
-BioProjects.ReadGroupsRoute = Ember.Route.extend({
+SeqResults.ReadGroupsRoute = Ember.Route.extend({
   model: function(params) {
     var run = this.store.find('run', params['run_id']);
     this.set('run', run);

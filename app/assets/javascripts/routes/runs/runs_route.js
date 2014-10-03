@@ -1,4 +1,4 @@
-BioProjects.RunsRoute = Ember.Route.extend({
+SeqResults.RunsRoute = Ember.Route.extend({
   model: function(params) {
     var project_id = params.project_id;
     this.set('project_id', project_id);

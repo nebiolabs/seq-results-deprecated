@@ -1,4 +1,4 @@
-BioProjects.ReadGroupController = Ember.ObjectController.extend({
+SeqResults.ReadGroupController = Ember.ObjectController.extend({
 
   actions: {
     save: function(){
