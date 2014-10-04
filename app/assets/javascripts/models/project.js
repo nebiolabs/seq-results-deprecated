@@ -1,2 +1,2 @@
-BioProjects.Project = DS.Model.extend({
+SeqResults.Project = DS.Model.extend({
 });
