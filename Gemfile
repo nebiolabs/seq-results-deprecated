@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'active_model_serializers'
 gem 'dotenv'
 gem 'dotenv-deployment'
+gem 'jquery-datatables-rails', '~> 2.2.3'
 
 group :test do
   gem 'rspec-rails'
@@ -32,6 +33,6 @@ end
 
 group :assets do
   gem 'sass-rails'
-  # gem 'therubyracer', platforms: :ruby
+  gem 'therubyracer', platforms: :ruby
   gem 'uglifier', :require => 'uglifier'
 end

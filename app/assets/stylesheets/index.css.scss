@@ -30,13 +30,12 @@ table {
   table-layout: fixed;
 }
 
-th, td {
-  padding: 0;
-  height: 30px;
+tr.active td {
+  background-color: #017ebc !important;
 }
 
-tr.active td{
-  background-color: rgb(208, 155, 44) !important;
+tr.active td .btn{
+  color: black !important;
 }
 
 .input-group {

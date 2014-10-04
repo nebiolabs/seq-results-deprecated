@@ -18,8 +18,8 @@
 //= require moment
 //= require ember
 //= require ember-data
-//= require jquery.dataTables.min
-//= require dataTables.bootstrap
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_self
 //= require seqresults.js
 
