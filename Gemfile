@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.4'
+gem 'rails', '~> 4.1.6'
 gem 'pg'
 
 gem 'jquery-rails'
@@ -29,6 +29,7 @@ group :test, :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'unicorn'
 end
 
 group :assets do
