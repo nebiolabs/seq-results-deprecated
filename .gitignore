@@ -17,3 +17,4 @@
 /.idea
 /coverage
 /config/database.yml
+.ruby-gemset
