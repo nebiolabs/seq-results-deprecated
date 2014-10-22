@@ -1,16 +1,14 @@
 <ol class="breadcrumb">
-  <li>{{#link-to 'runs'}}Run: {{run.name}}{{/link-to}}</li>
+  <li>{{#link-to 'projects'}}Project: {{project_id}}{{/link-to}}</li>
+  <li>{{#link-to 'runs' project_id}}Run: {{run.name}}{{/link-to}}</li>
   <li>{{#link-to 'read_groups'}}Read Groups{{/link-to}}</li>
 </ol>
 
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="col-md-6">
-      <h3>
-        <span class="label label-default">Read Groups</span>
-      </h3>
 
-      <table class='table table-striped' id="library-prep-table">
+      <table class='table table-striped'>
         <thead>
         <tr>
           <th>Library</th>

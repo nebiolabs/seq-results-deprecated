@@ -6,5 +6,6 @@ SeqResults.Run = DS.Model.extend({
   instrument: DS.attr('string'),
   instrument_type: DS.attr('string'),
 
-  read_groups_count: DS.attr('number')
+  read_groups_count: DS.attr('number'),
+  read_groups_data: DS.attr('string')
 });

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.4'
+gem 'rails', '~> 4.1.6'
 gem 'pg'
 
 gem 'jquery-rails'
@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'active_model_serializers'
 gem 'dotenv'
 gem 'dotenv-deployment'
+gem 'jquery-datatables-rails', '~> 2.2.3'
 
 group :test do
   gem 'rspec-rails'
@@ -28,6 +29,7 @@ group :test, :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'unicorn'
 end
 
 group :assets do

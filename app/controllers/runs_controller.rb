@@ -2,7 +2,9 @@ class RunsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Run.all.order(:id).includes(:read_groups)
+    @runs = Run.joins(:read_groups).uniq.where(read_groups: { project: params[:project_id] })
+
+    respond_with @runs
   end
 
   def show

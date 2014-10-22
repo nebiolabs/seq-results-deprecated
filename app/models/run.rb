@@ -6,4 +6,19 @@ class Run < ActiveRecord::Base
   def read_groups_count
     read_groups.size
   end
+
+  def read_groups_data
+    read_groups.pluck(
+      :library,
+      :barcode,
+      :sample,
+      :project,
+      :library_prep_method,
+      :shearing_method,
+      :genome,
+      :contact_email,
+      :notebook_location,
+      :pre_denaturation_buffer
+    ).flatten.uniq.join(',')
+  end
 end

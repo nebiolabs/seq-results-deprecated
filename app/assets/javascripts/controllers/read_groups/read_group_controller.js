@@ -12,10 +12,9 @@ SeqResults.ReadGroupController = Ember.ObjectController.extend({
       });
     },
     delete: function(){
-      if (window.confirm("Are you sure you want to delete this run?")){
+      if (window.confirm("Are you sure you want to delete this read group?")){
         this.get('model').deleteRecord();
         this.get('model').save();
-        this.transitionToRoute('readGroups.index')
       }
     },
     deleteModels: function(){

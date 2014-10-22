@@ -1,9 +1,8 @@
-
 development:
   adapter: postgresql
   encoding: unicode
   database: seq_results
-  port: 5432
+  port:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -30,4 +29,4 @@ test: &test
   adapter: postgresql
   encoding: unicode
   database: seq_results_test
-  port: 5432
+  port:
