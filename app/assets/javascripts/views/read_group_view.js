@@ -1,7 +1,7 @@
 SeqResults.RunsView = Ember.View.extend({
   didInsertElement: function() {
     $('#runs-table').dataTable({
-      paging: false,
+//      paging: false,
       info: false,
       "columnDefs": [
         {
