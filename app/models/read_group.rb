@@ -17,13 +17,29 @@ class ReadGroup < ActiveRecord::Base
   validates_presence_of :barcode
   validates_presence_of :sample
 
+  # TODO 1: Cannot quickly find a method for this to also work with
+  # :has_one. 
   def association_meta_data
-    ReadGroup.reflect_on_all_associations(:has_many).map do |reflection|
+    
+    association_meta_data =
+      ReadGroup.reflect_on_all_associations(:has_many).map do |reflection|
       {
         class_name: reflection.plural_name,
         count: self.send(reflection.plural_name).size,
         button_text: "Delete #{reflection.plural_name.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
       }
     end
+
+    reflection_plural_name = 'bedgraph_files'
+    reflection_singular_name = 'bedgraph_file'
+    count = self.send(reflection_singular_name).nil? ? 0 : 1
+
+    association_meta_data << {
+      class_name: reflection_plural_name,
+      count: count,
+      button_text: "Delete #{reflection_singular_name.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
+    }
+    
+    return association_meta_data
   end
 end
