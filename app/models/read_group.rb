@@ -17,11 +17,15 @@ class ReadGroup < ActiveRecord::Base
   validates_presence_of :barcode
   validates_presence_of :sample
 
-  # TODO 1: Cannot quickly find a method for this to also work with
-  # :has_one. 
+  # The method is used in making the "Delete" buttons to remove data
+  # associated with read group model, and maybe in other places.
+  # Cannot quickly find a way to treat all the associations of a model
+  # in a generic way, even though this should be a common
+  # operation. Resorting to special cases.
+  
   def association_meta_data
-    
-    association_meta_data =
+
+    has_many_association_meta_data =
       ReadGroup.reflect_on_all_associations(:has_many).map do |reflection|
       {
         class_name: reflection.plural_name,
@@ -30,16 +34,19 @@ class ReadGroup < ActiveRecord::Base
       }
     end
 
-    reflection_plural_name = 'bedgraph_files'
-    reflection_singular_name = 'bedgraph_file'
-    count = self.send(reflection_singular_name).nil? ? 0 : 1
-
-    association_meta_data << {
-      class_name: reflection_plural_name,
-      count: count,
-      button_text: "Delete #{reflection_singular_name.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
-    }
+    has_one_association_meta_data =
+      ReadGroup.reflect_on_all_associations(:has_one).map do |reflection|
+      {
+        class_name: reflection.plural_name,
+        # Cannot quickly find a way to get self.send(reflection.name)
+        # to return the actual count, resorting to this special case:
+        count: self.send(reflection.name).nil? ? 0 : 1,
+        # reflection.name.gsub fails even though
+        # reflection.plural_name.gsub works, resorting to to_s:
+        button_text: "Delete #{reflection.name.to_s.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
+      }
+    end
     
-    return association_meta_data
+    return has_many_association_meta_data + has_one_association_meta_data
   end
 end
