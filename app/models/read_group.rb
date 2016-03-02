@@ -37,7 +37,7 @@ class ReadGroup < ActiveRecord::Base
     has_one_association_meta_data =
       ReadGroup.reflect_on_all_associations(:has_one).map do |reflection|
       {
-        class_name: reflection.plural_name,
+        class_name: reflection.name,
         # Cannot quickly find a way to get self.send(reflection.name)
         # to return the actual count, resorting to this special case:
         count: self.send(reflection.name).nil? ? 0 : 1,
