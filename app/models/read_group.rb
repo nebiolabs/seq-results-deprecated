@@ -22,7 +22,7 @@ class ReadGroup < ActiveRecord::Base
   # Cannot quickly find a way to treat all the associations of a model
   # in a generic way, even though this should be a common
   # operation. Resorting to special cases.
-  
+
   def association_meta_data
 
     has_many_association_meta_data =
@@ -37,7 +37,8 @@ class ReadGroup < ActiveRecord::Base
     has_one_association_meta_data =
       ReadGroup.reflect_on_all_associations(:has_one).map do |reflection|
       {
-        class_name: reflection.name,
+        # class_name value must be a string, not symbol:
+        class_name: reflection.name.to_s,
         # Cannot quickly find a way to get self.send(reflection.name)
         # to return the actual count, resorting to this special case:
         count: self.send(reflection.name).nil? ? 0 : 1,
@@ -46,7 +47,15 @@ class ReadGroup < ActiveRecord::Base
         button_text: "Delete #{reflection.name.to_s.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
       }
     end
+
+    # class_name value must be a string, not symbol:
+    skip_classes = %w(bedgraph_file)
+    all_association_meta_data = 
+    (has_many_association_meta_data +
+     has_one_association_meta_data
+    ).reject { |a| skip_classes.include?(a[:class_name]) }
+    puts "all_association_meta_data=#{all_association_meta_data.inspect}"
     
-    return has_many_association_meta_data + has_one_association_meta_data
+    return all_association_meta_data
   end
 end

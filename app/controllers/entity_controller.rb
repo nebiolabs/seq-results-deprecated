@@ -10,24 +10,29 @@ class EntityController < ApplicationController
       whitelist_classes.include?(association.to_sym)
     end
 
-    # TODO 1: change to del/destroy all assoc records; depending on the model; maybe use only 1 master button instead of many for bedgraph and per trx cov; 03/02/16 W;
+    puts "allowed_associations=#{allowed_associations}"
+    
     status = 501
     allowed_associations.each do |association|
 
-      if read_group.send(association).respond_to?(:delete_all)
+      puts "association=#{association.inspect}"
+      target_class = association.classify.constantize
+      if target_class.respond_to?(:use_destroy_method) && target_class.use_destroy_method
+        puts "use_destroy_method"
+        if read_group.send(association).destroy
+          status = 200
+        else
+          status = 500
+        end
+      elsif read_group.send(association).respond_to?(:delete_all)
+        puts "use_delete_all_method"
         if read_group.send(association).delete_all
           status = 200
         else
           status = 500
         end
-      elsif read_group.send(association).respond_to?(:delete)
-        if read_group.send(association).delete
-          status = 200
-        else
-          status = 500
-        end
       else
-        raise("Cannot delete association=#{association.inspect} " +
+        raise("Cannot destroy or delete_all association=#{association.inspect} " +
               "for read_group=#{read_group.inspect}")
       end
     end
@@ -38,8 +43,11 @@ class EntityController < ApplicationController
   private
 
   def whitelist_classes
-    (ReadGroup.reflect_on_all_associations(:has_many).map(&:name) +
-     ReadGroup.reflect_on_all_associations(:has_one).map(&:name))
+    
+    # class_name value must be a symbol here:
+    skip_classes = %w(bedgraph_file).map(&:to_sym)
+    ReadGroup.reflect_on_all_associations(:has_many).map(&:name).
+      reject { |cls| skip_classes.include?(cls) }
   end
 
   def entity_params
