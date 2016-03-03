@@ -17,14 +17,8 @@ class EntityController < ApplicationController
 
       puts "association=#{association.inspect}"
       target_class = association.classify.constantize
-      if target_class.respond_to?(:use_destroy_method) && target_class.use_destroy_method
-        puts "use_destroy_method"
-        if read_group.send(association).destroy
-          status = 200
-        else
-          status = 500
-        end
-      elsif read_group.send(association).respond_to?(:delete_all)
+
+      if read_group.send(association).respond_to?(:delete_all)
         puts "use_delete_all_method"
         if read_group.send(association).delete_all
           status = 200
