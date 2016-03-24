@@ -10,7 +10,7 @@ class EntityController < ApplicationController
       whitelist_classes.include?(association.to_sym)
     end
 
-    puts "allowed_associations=#{allowed_associations};"
+    puts "allowed_associations=#{allowed_associations}"
     
     status = 501
     allowed_associations.each do |association|
@@ -18,20 +18,9 @@ class EntityController < ApplicationController
       puts "association=#{association.inspect}"
       target_class = association.classify.constantize
 
-      # delete_methods = read_group.send(association).methods.
-      #                  select { |s| s.to_s.match(/(destroy|delete)/) }
-      # puts "delete_methods=#{delete_methods};"
-
       if read_group.send(association).respond_to?(:delete_all)
         puts "use_delete_all_method"
         if read_group.send(association).delete_all
-          status = 200
-        else
-          status = 500
-        end
-      elsif read_group.send(association).respond_to?(:delete)
-        puts "use_delete_method"
-        if read_group.send(association).delete
           status = 200
         else
           status = 500
@@ -50,11 +39,8 @@ class EntityController < ApplicationController
   def whitelist_classes
     
     # class_name value must be a symbol here:
-    skip_classes = []
-    # skip_classes = %w(bedgraph_file).map(&:to_sym)
-    (ReadGroup.reflect_on_all_associations(:has_many) +
-     ReadGroup.reflect_on_all_associations(:has_one)
-    ).map(&:name).
+    skip_classes = %w(bedgraph_file).map(&:to_sym)
+    ReadGroup.reflect_on_all_associations(:has_many).map(&:name).
       reject { |cls| skip_classes.include?(cls) }
   end
 

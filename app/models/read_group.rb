@@ -49,8 +49,7 @@ class ReadGroup < ActiveRecord::Base
     end
 
     # class_name value must be a string, not symbol:
-    skip_classes = []
-    # skip_classes = %w(bedgraph_file)
+    skip_classes = %w(bedgraph_file)
     all_association_meta_data = 
     (has_many_association_meta_data +
      has_one_association_meta_data
