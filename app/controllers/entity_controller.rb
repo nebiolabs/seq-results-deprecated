@@ -20,7 +20,9 @@ class EntityController < ApplicationController
 
       if read_group.send(association).respond_to?(:delete_all)
         puts "use_delete_all_method"
-        if read_group.send(association).delete_all
+        delete_all_retval = read_group.send(association).delete_all
+        puts "delete_all_retval=#{delete_all_retval};"
+        if not delete_all_retval
           status = 200
         else
           status = 500
