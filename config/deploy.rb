@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'seqresults'
-set :repo_url, 'git@github.com:nebiolabs/SeqResults.git'
+set :repo_url, 'git@github.com:nebiolabs/seq-results.git'
 
 set :rbenv_ruby, File.read('.ruby-version').strip
 
