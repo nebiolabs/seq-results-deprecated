@@ -12,6 +12,7 @@ class ReadGroup < ActiveRecord::Base
   has_one :bedgraph_file, inverse_of: :read_group, dependent: :destroy
   has_many :per_transcript_coverages, inverse_of: :read_group, dependent: :destroy
   has_many :transcript_abundances, inverse_of: :read_group, dependent: :destroy
+  has_many :rna_seq_metrics, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
 
   validates_presence_of :library
   validates_presence_of :barcode
