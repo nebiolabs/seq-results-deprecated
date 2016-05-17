@@ -6,7 +6,7 @@ describe AlignmentMetric do
   it { should validate_presence_of :rg_id }
 
   context 'it has a composite key of rg_id and category' do
-    it 'should error when another alignment_metric with the same primary keys is create' do
+    it 'should error when another alignment_metric with the same primary keys is created' do
       first_alignment_metric = create(:alignment_metric)
       count = AlignmentMetric.count
 

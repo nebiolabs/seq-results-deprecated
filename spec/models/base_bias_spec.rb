@@ -12,7 +12,7 @@ describe BaseBias do
   it { should validate_presence_of(:num_x) }
 
   context 'it has a composite key of rg_id and read_position' do
-    it 'should error when another base_bias with the same primary keys is create' do
+    it 'should error when another base_bias with the same primary keys is created' do
       first_base_bias = create(:base_bias)
       count = BaseBias.count
 

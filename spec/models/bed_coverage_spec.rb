@@ -8,7 +8,7 @@ describe BedCoverage do
   it { should validate_presence_of(:bed_id) }
 
   context 'it has a composite key of rg_id and bed_id' do
-    it 'should error when another bed_coverage with the same primary keys is create' do
+    it 'should error when another bed_coverage with the same primary keys is created' do
       first_bed_coverage = create(:bed_coverage)
       count = BedCoverage.count
 
