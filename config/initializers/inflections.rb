@@ -20,4 +20,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'base_bias', 'base_biases'
   inflect.irregular 'gcbias', 'gcbiases'
   inflect.irregular 'basebias', 'basebiases'
+  inflect.irregular 'observed_taxon', 'observed_taxa'
 end
