@@ -94,7 +94,7 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
-    libv8 (3.16.14.7)
+    libv8 (3.16.14.15)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -223,3 +223,6 @@ DEPENDENCIES
   uglifier
   underscore-rails
   unicorn
+
+BUNDLED WITH
+   1.12.5
