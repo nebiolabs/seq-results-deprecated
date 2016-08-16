@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701202346) do
+ActiveRecord::Schema.define(version: 20160816191829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
-  create_table "alignment_metrics", id: false, force: true do |t|
-    t.integer "rg_id",                                null: false
+  create_table "alignment_metrics", primary_key: "rg_id", force: true do |t|
     t.string  "category",                             null: false
     t.integer "num_reads",                  limit: 8
     t.integer "pf_reads",                   limit: 8
@@ -43,10 +41,7 @@ ActiveRecord::Schema.define(version: 20140701202346) do
     t.float   "pct_adapter"
   end
 
-  add_index "alignment_metrics", ["rg_id"], name: "in_alignment_metrics_rg_id", using: :btree
-
-  create_table "base_biases", id: false, force: true do |t|
-    t.integer "rg_id",                   null: false
+  create_table "base_biases", primary_key: "rg_id", force: true do |t|
     t.integer "read_position",           null: false
     t.integer "num_a",         limit: 8, null: false
     t.integer "num_c",         limit: 8, null: false
@@ -56,16 +51,13 @@ ActiveRecord::Schema.define(version: 20140701202346) do
     t.integer "num_x",         limit: 8, null: false
   end
 
-  add_index "base_biases", ["rg_id"], name: "in_base_biases_rg_id", using: :btree
-
-  create_table "bed_coverages", id: false, force: true do |t|
-    t.integer "rg_id",  null: false
-    t.integer "bed_id", null: false
-    t.integer "depth"
+  create_table "bed_coverages", primary_key: "rg_id", force: true do |t|
+    t.integer "bed_id",    null: false
+    t.integer "num_reads"
+    t.float   "depth"
   end
 
   add_index "bed_coverages", ["bed_id"], name: "index_bed_coverages_on_bed_id", using: :btree
-  add_index "bed_coverages", ["rg_id"], name: "in_bed_cov_rg_id", using: :btree
   add_index "bed_coverages", ["rg_id"], name: "index_bed_coverages_on_rg_id", using: :btree
 
   create_table "bed_groups", force: true do |t|
@@ -76,7 +68,6 @@ ActiveRecord::Schema.define(version: 20140701202346) do
   end
 
   add_index "bed_groups", ["md5sum"], name: "index_bed_groups_on_md5sum", unique: true, using: :btree
-  add_index "bed_groups", ["name"], name: "index_bed_groups_name", using: :btree
 
   create_table "bed_regions", force: true do |t|
     t.string  "name"
@@ -90,17 +81,12 @@ ActiveRecord::Schema.define(version: 20140701202346) do
 
   add_index "bed_regions", ["bed_group_id"], name: "index_bed_regions_on_bed_group_id", using: :btree
 
-  create_table "coverage_depths", id: false, force: true do |t|
-    t.integer "rg_id",                                                                        null: false
-    t.integer "depth",                                                                        null: false
-    t.string  "chromosome",                                                                   null: false
+  create_table "coverage_depths", primary_key: "rg_id", force: true do |t|
+    t.integer "depth",                null: false
+    t.string  "chromosome",           null: false
     t.integer "num_bases",  limit: 8
     t.float   "frac_bases"
-    t.integer "id",                   default: "nextval('coverage_depths_id_seq'::regclass)", null: false
   end
-
-  add_index "coverage_depths", ["id"], name: "coverage_depth_pk", unique: true, using: :btree
-  add_index "coverage_depths", ["rg_id"], name: "in_cov_depth_rg_id", using: :btree
 
   create_table "duplicate_groups", id: false, force: true do |t|
     t.integer "rg_id",                       null: false
@@ -108,14 +94,12 @@ ActiveRecord::Schema.define(version: 20140701202346) do
     t.integer "num_reads",         limit: 8, null: false
   end
 
-  create_table "duplicate_reads", id: false, force: true do |t|
-    t.integer "rg_id",       null: false
+  create_table "duplicate_reads", primary_key: "rg_id", force: true do |t|
     t.integer "fold_reads",  null: false
     t.float   "fold_unique", null: false
   end
 
-  create_table "gc_biases", id: false, force: true do |t|
-    t.integer "rg_id",                         null: false
+  create_table "gc_biases", primary_key: "rg_id", force: true do |t|
     t.integer "pct_gc",                        null: false
     t.integer "num_reads",           limit: 8, null: false
     t.integer "num_windows",         limit: 8, null: false
@@ -124,14 +108,11 @@ ActiveRecord::Schema.define(version: 20140701202346) do
     t.float   "error_bar_width",               null: false
   end
 
-  create_table "insert_sizes", id: false, force: true do |t|
-    t.integer "rg_id",                 null: false
+  create_table "insert_sizes", primary_key: "rg_id", force: true do |t|
     t.integer "insert_size",           null: false
     t.integer "fr_count",    limit: 8, null: false
     t.integer "rf_count",    limit: 8
   end
-
-  add_index "insert_sizes", ["rg_id"], name: "in_rg_id", using: :btree
 
   create_table "library_complexities", id: false, force: true do |t|
     t.integer "rg_id",                                  null: false
@@ -145,11 +126,28 @@ ActiveRecord::Schema.define(version: 20140701202346) do
     t.integer "estimated_library_size",       limit: 8, null: false
   end
 
+  create_table "properties", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "read_group_properties", force: true do |t|
+    t.integer  "property_id",   null: false
+    t.integer  "read_group_id", null: false
+    t.string   "raw_value",     null: false
+    t.float    "numeric_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "read_group_properties", ["property_id", "read_group_id"], name: "index_read_group_properties_on_property_id_and_read_group_id", unique: true, using: :btree
+
   create_table "read_groups", force: true do |t|
-    t.integer "run_id",                            null: false
-    t.string  "library",                           null: false
-    t.string  "barcode",                           null: false
-    t.string  "sample",                            null: false
+    t.integer "run_id",                                          null: false
+    t.string  "library",                                         null: false
+    t.string  "barcode",                                         null: false
+    t.string  "sample",                                          null: false
     t.string  "project"
     t.date    "library_date"
     t.string  "library_prep_method"
@@ -176,6 +174,9 @@ ActiveRecord::Schema.define(version: 20140701202346) do
     t.float   "pcr_volume_ul"
     t.string  "notebook_location"
     t.string  "pre_denaturation_buffer"
+    t.string  "lane",                              default: "1", null: false
+    t.float   "gc_stat"
+    t.integer "num_rrna_reads",          limit: 8
   end
 
   create_table "runs", force: true do |t|
