@@ -15,7 +15,6 @@ class Run < ActiveRecord::Base
       :project,
       :library_prep_method,
       :shearing_method,
-      :genome,
       :contact_email,
       :notebook_location,
       :pre_denaturation_buffer
