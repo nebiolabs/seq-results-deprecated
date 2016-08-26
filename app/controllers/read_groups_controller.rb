@@ -27,9 +27,31 @@ class ReadGroupsController < ApplicationController
     respond_with ReadGroup.destroy(params[:id])
   end
 
+
+  def create
+    read_group = ReadGroup.new(read_group_params)
+
+    status = read_group.save ? 200 : :unprocessable_entity
+
+    respond_with read_group, status: status
+
+  end
+
+
   private
+
+  def read_group_new_update
+    properties_keys = params['read_group']['properties'].keys
+    params.permit( properties: properties_keys)
+  end
+
+
+
   def read_group_params
-    params.require(:read_group).permit(
+    properties_keys = params['read_group']['properties'].keys
+
+
+    params.require(:read_group).permit(:run_id, :genome_id,
       :library, :barcode, :sample, :library_prep_method, :input_ng,
       :shearing_method, :avg_insert_size,
       :max_insert_size, :min_insert_size,
@@ -38,7 +60,8 @@ class ReadGroupsController < ApplicationController
       :pcr_extension_deg, :start_library_nm,
       :final_library_pm, :naoh_stock_date,
       :pcr_yield_ng, :pcr_conc_nm, :pcr_volume_ul,
-      :notebook_location, :pre_denaturation_buffer
-    )
+      :notebook_location, :pre_denaturation_buffer, properties: properties_keys)
   end
+
+
 end
