@@ -22,8 +22,16 @@ class RunsController < ApplicationController
     respond_with Run.destroy(params[:id])
   end
 
+  def create
+    run = Run.new(run_params)
+    status = run.save ? 200 : :unprocessable_entity
+
+    respond_with run, status: status
+  end
+
   private
   def run_params
-    params.require(:run).permit(:name, :date, :instrument, :instrument_type)
+    params.require(:run).permit(:name, :date, :instrument, :instrument_type, :read_1_size, :index_read_2_size, :read_3_size, :index_read_4_size)
   end
+
 end
