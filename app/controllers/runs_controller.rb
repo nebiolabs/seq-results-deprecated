@@ -31,7 +31,7 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:name, :date, :instrument, :instrument_type, :read_1_size, :index_read_2_size, :read_3_size, :index_read_4_size)
+    params.require(:run).permit(:name, :flowcell, :date, :instrument, :instrument_type, :read_1_size, :index_read_2_size, :read_3_size, :index_read_4_size)
   end
 
 end

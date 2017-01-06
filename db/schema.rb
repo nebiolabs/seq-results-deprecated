@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229213643) do
+ActiveRecord::Schema.define(version: 20170106182351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -410,14 +410,11 @@ ActiveRecord::Schema.define(version: 20161229213643) do
   add_index "rna_seq_metrics", ["rg_id"], name: "index_rna_seq_metrics_on_rg_id", using: :btree
 
   create_table "runs", force: true do |t|
-    t.string  "name",              null: false
-    t.date    "date"
-    t.string  "instrument"
-    t.string  "instrument_type"
-    t.integer "read_1_size"
-    t.integer "index_read_2_size"
-    t.integer "read_3_size"
-    t.integer "index_read_4_size"
+    t.string "name",                        null: false
+    t.date   "date"
+    t.string "instrument"
+    t.string "instrument_type"
+    t.string "flow_cell",       limit: nil
   end
 
   create_table "transcript_abundances", force: true do |t|
