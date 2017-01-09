@@ -51,7 +51,7 @@ class ReadGroupsController < ApplicationController
     properties_keys = params['read_group']['properties'].keys
 
 
-    params.require(:read_group).permit(:run_id, :genome_id,
+    params.require(:read_group).permit(:run_id, :genome_id, :project,
       :library, :barcode, :sample, :library_prep_method, :input_ng,
       :shearing_method, :avg_insert_size,
       :max_insert_size, :min_insert_size,
