@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111143404) do
+ActiveRecord::Schema.define(version: 20170111195452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -259,6 +259,38 @@ ActiveRecord::Schema.define(version: 20170111143404) do
 
   add_index "insert_sizes", ["rg_id"], name: "in_rg_id", using: :btree
 
+  create_table "libraries", force: true do |t|
+    t.integer  "run_id",                          null: false
+    t.string   "library",             limit: nil, null: false
+    t.string   "barcode",             limit: nil, null: false
+    t.string   "sample",              limit: nil, null: false
+    t.string   "project",             limit: nil
+    t.date     "library_date"
+    t.string   "library_prep_method", limit: nil
+    t.float    "input_ng"
+    t.string   "shearing_method",     limit: nil
+    t.integer  "avg_insert_size"
+    t.integer  "max_insert_size"
+    t.integer  "min_insert_size"
+    t.text     "notes"
+    t.integer  "pcr_cycles"
+    t.integer  "pcr_annealing_sec"
+    t.integer  "pcr_annealing_deg"
+    t.integer  "pcr_extension_sec"
+    t.integer  "pcr_extension_deg"
+    t.date     "naoh_stock_date"
+    t.float    "pcr_yield_ng"
+    t.float    "pcr_conc_nm"
+    t.float    "pcr_volume_ul"
+    t.string   "notebook_location",   limit: nil
+    t.integer  "genome_id"
+    t.string   "genome",              limit: 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "product_number",      limit: nil
+    t.string   "email",               limit: nil
+  end
+
   create_table "library_complexities", id: false, force: true do |t|
     t.integer "rg_id",                                  null: false
     t.integer "unpaired_reads_examined",                null: false
@@ -270,6 +302,17 @@ ActiveRecord::Schema.define(version: 20170111143404) do
     t.float   "percent_duplication",                    null: false
     t.integer "estimated_library_size",       limit: 8, null: false
   end
+
+  create_table "library_properties", force: true do |t|
+    t.integer  "property_id",               null: false
+    t.integer  "library_id",                null: false
+    t.string   "raw_value",     limit: nil, null: false
+    t.float    "numeric_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "library_properties", ["property_id", "library_id"], name: "index_library_properties_on_property_id_and_library_id", unique: true, using: :btree
 
   create_table "loaded_files", force: true do |t|
     t.string   "name",       limit: nil, null: false
@@ -369,6 +412,7 @@ ActiveRecord::Schema.define(version: 20170111143404) do
     t.string   "product_number",           limit: nil
     t.string   "lot_number",               limit: nil
     t.string   "email",                    limit: nil
+    t.integer  "library_id"
   end
 
   add_index "read_groups", ["genome_id"], name: "index_read_groups_on_genome_id", using: :btree
@@ -438,6 +482,10 @@ ActiveRecord::Schema.define(version: 20170111143404) do
     t.string  "username",                    limit: nil
     t.string  "workflow_analysis",           limit: nil
     t.boolean "enable_analysis"
+    t.integer "read_1_size"
+    t.integer "index_read_2_size"
+    t.integer "read_3_size"
+    t.integer "index_read_4_size"
   end
 
   create_table "transcript_abundances", force: true do |t|
