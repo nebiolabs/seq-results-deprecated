@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110220851) do
+ActiveRecord::Schema.define(version: 20170111143404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -415,7 +415,7 @@ ActiveRecord::Schema.define(version: 20170110220851) do
     t.date    "date"
     t.string  "instrument"
     t.string  "instrument_type"
-    t.string  "flow_cell",                   limit: nil
+    t.string  "flowcell",                    limit: nil
     t.string  "run_parameters_version",      limit: nil
     t.string  "flowcell_serial_number",      limit: nil
     t.integer "flowcell_part_number"
