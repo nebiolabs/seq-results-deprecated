@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index]
   resources :runs
-  resources :read_groups do
+  resources :read_groups
+  resources :libraries do
     post 'entity', to: 'entity#destroy_all'
   end
 end
