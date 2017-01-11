@@ -1,5 +1,6 @@
 class ReadGroup < ActiveRecord::Base
   belongs_to :run
+  belongs_to :library
   has_many :gc_biases, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :insert_sizes, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :base_biases, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
@@ -15,39 +16,6 @@ class ReadGroup < ActiveRecord::Base
   has_many :rna_seq_metrics, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :observed_taxa, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :read_group_properties, inverse_of: :read_group, dependent: :destroy
-  accepts_nested_attributes_for :read_group_properties
-
-  validates_presence_of :library
-  validates_presence_of :barcode
-  validates_presence_of :sample
-
-
-  def properties=(value)
-    create_parent
-
-    value.each_key do |key|
-      property = Property.find_or_create_by(:name => key)
-
-      if is_number?(value[key])
-        self.read_group_properties.build(:property => property, :raw_value => value[key], :numeric_value => value[key].to_f, :read_group_id => self)
-      else
-        self.read_group_properties.build(:property => property, :raw_value => value[key], :read_group_id => self)
-
-      end
-
-
-    end
-
-  end
-
-  def create_parent
-    self.save
-  end
-
-  def is_number?(string)
-    true if Float(string) rescue false
-  end
-
 
   # The method is used in making the "Delete" buttons to remove data
   # associated with read group model, and maybe in other places.
