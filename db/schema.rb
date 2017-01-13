@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106182351) do
+ActiveRecord::Schema.define(version: 20170111143404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -368,6 +368,7 @@ ActiveRecord::Schema.define(version: 20170106182351) do
     t.datetime "updated_at"
     t.string   "product_number",           limit: nil
     t.string   "lot_number",               limit: nil
+    t.string   "email",                    limit: nil
   end
 
   add_index "read_groups", ["genome_id"], name: "index_read_groups_on_genome_id", using: :btree
@@ -410,11 +411,33 @@ ActiveRecord::Schema.define(version: 20170106182351) do
   add_index "rna_seq_metrics", ["rg_id"], name: "index_rna_seq_metrics_on_rg_id", using: :btree
 
   create_table "runs", force: true do |t|
-    t.string "name",                        null: false
-    t.date   "date"
-    t.string "instrument"
-    t.string "instrument_type"
-    t.string "flow_cell",       limit: nil
+    t.string  "name",                                    null: false
+    t.date    "date"
+    t.string  "instrument"
+    t.string  "instrument_type"
+    t.string  "flowcell",                    limit: nil
+    t.string  "run_parameters_version",      limit: nil
+    t.string  "flowcell_serial_number",      limit: nil
+    t.integer "flowcell_part_number"
+    t.date    "flowcell_expiration_date"
+    t.string  "pr2bottle_serial_number",     limit: nil
+    t.integer "pr2bottle_part_number"
+    t.date    "pr2bottle_expiration_date"
+    t.string  "reagent_kit_serial_number",   limit: nil
+    t.integer "reagent_kit_part_number"
+    t.date    "reagent_kit_expiration_date"
+    t.string  "reagent_kit_version",         limit: nil
+    t.string  "run_id",                      limit: nil
+    t.string  "scanner_id",                  limit: nil
+    t.integer "run_number"
+    t.string  "fpga_version",                limit: nil
+    t.string  "mcs_version",                 limit: nil
+    t.string  "rta_version",                 limit: nil
+    t.string  "experiment_name",             limit: nil
+    t.string  "chemistry",                   limit: nil
+    t.string  "username",                    limit: nil
+    t.string  "workflow_analysis",           limit: nil
+    t.boolean "enable_analysis"
   end
 
   create_table "transcript_abundances", force: true do |t|
