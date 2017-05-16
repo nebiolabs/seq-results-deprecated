@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.8.1'
 
 set :application, 'seqresults'
 set :repo_url, 'git@github.com:nebiolabs/seq-results.git'
