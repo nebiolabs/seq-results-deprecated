@@ -41,14 +41,15 @@ class ReadGroupsController < ApplicationController
   private
 
   def read_group_new_update
-    properties_keys = params['read_group']['properties'].keys
+    properties_keys = params['read_group']['properties']&.keys ||[]
     params.permit( properties: properties_keys)
   end
 
 
 
   def read_group_params
-    properties_keys = params['read_group']['properties'].keys
+
+    properties_keys = params['read_group']['properties']&.keys || []
 
 
     params.require(:read_group).permit(:run_id, :genome_id, :project,
