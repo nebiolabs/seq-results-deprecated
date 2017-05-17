@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.6'
+gem 'rails', '~> 4.1.0'
 gem 'pg'
 
 gem 'jquery-rails'
-gem 'composite_primary_keys', '~> 7.0.10'
+gem 'composite_primary_keys'
 gem 'underscore-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.5.0'
