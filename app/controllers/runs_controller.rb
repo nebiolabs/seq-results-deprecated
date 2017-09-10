@@ -31,7 +31,7 @@ class RunsController < ApplicationController
 
   private
   def run_params
-    params.require(:run).permit(:name, :flowcell, :date, :instrument, :instrument_type, :read_1_size, :index_read_2_size,
+    params.require(:run).permit(:name, :flow_cell, :date, :instrument, :instrument_type, :read_1_size, :index_read_2_size,
                                 :read_3_size, :index_read_4_size,:run_parameters_version, :flowcell_serial_number,
                                 :flowcell_part_number,:flowcell_expiration_date,:pr2bottle_serial_number,
                                 :pr2bottle_part_number,:pr2bottle_expiration_date, :reagent_kit_serial_number,

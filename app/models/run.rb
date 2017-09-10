@@ -2,7 +2,7 @@ class Run < ActiveRecord::Base
   has_many :read_groups, dependent: :destroy
 
   validates_presence_of :name
-  validates_uniqueness_of :flowcell
+  validates_uniqueness_of :flow_cell
 
   def read_groups_count
     read_groups.size

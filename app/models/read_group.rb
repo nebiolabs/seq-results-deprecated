@@ -15,6 +15,8 @@ class ReadGroup < ActiveRecord::Base
   has_many :rna_seq_metrics, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :observed_taxa, inverse_of: :read_group, foreign_key: [:rg_id], dependent: :destroy
   has_many :read_group_properties, inverse_of: :read_group, dependent: :destroy
+  has_many :properties, through: :read_group_properties
+
   accepts_nested_attributes_for :read_group_properties
 
   validates_presence_of :library
@@ -22,32 +24,24 @@ class ReadGroup < ActiveRecord::Base
   validates_presence_of :sample
 
 
-  def properties=(value)
-    create_parent
+  def property_values=(value)
 
     value.each_key do |key|
       property = Property.find_or_create_by(:name => key)
 
-      if is_number?(value[key])
-        self.read_group_properties.build(:property => property, :raw_value => value[key], :numeric_value => value[key].to_f, :read_group_id => self)
+      if number?(value[key])
+        self.read_group_properties.build(:property => property, :raw_value => value[key], :numeric_value => value[key].to_f)
       else
-        self.read_group_properties.build(:property => property, :raw_value => value[key], :read_group_id => self)
-
+        self.read_group_properties.build(:property => property, :raw_value => value[key])
       end
-
 
     end
 
   end
 
-  def create_parent
-    self.save
-  end
-
-  def is_number?(string)
+  def number?(string)
     true if Float(string) rescue false
   end
-
 
   # The method is used in making the "Delete" buttons to remove data
   # associated with read group model, and maybe in other places.
