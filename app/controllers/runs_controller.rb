@@ -23,7 +23,12 @@ class RunsController < ApplicationController
   end
 
   def create
-    run = Run.new(run_params)
+    if run_params[:flow_cell]
+      run = Run.find_by(:flow_cell => run_params[:flow_cell])
+    end
+
+    run ||=  Run.new(run_params)
+
     status = run.save ? 200 : :unprocessable_entity
 
     respond_with run, status: status
