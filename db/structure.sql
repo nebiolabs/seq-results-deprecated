@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.3
--- Dumped by pg_dump version 9.6.3
+-- Dumped from database version 9.6.2
+-- Dumped by pg_dump version 9.6.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -164,7 +164,8 @@ CREATE TABLE bed_regions (
     bed_group_id integer NOT NULL,
     frac_gc double precision,
     folding_energy double precision,
-    context character varying
+    context character varying,
+    motif character varying
 );
 
 
@@ -513,9 +514,9 @@ CREATE TABLE observed_taxa (
 CREATE TABLE read_groups (
     id integer NOT NULL,
     run_id integer NOT NULL,
-    library character varying(255) NOT NULL,
+    library character varying(255),
     barcode character varying(255) NOT NULL,
-    sample character varying(255) NOT NULL,
+    sample character varying(255),
     project character varying(255),
     library_date date,
     library_prep_method character varying(255),
@@ -551,7 +552,8 @@ CREATE TABLE read_groups (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     product_number character varying,
-    lot_number character varying
+    lot_number character varying,
+    species character varying
 );
 
 
@@ -789,7 +791,8 @@ CREATE TABLE methylation_statuses (
     num_methylated_bases integer NOT NULL,
     num_unmethylated_bases integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    total integer
 );
 
 
@@ -1094,7 +1097,8 @@ CREATE TABLE runs (
     index_read_2_size integer,
     read_3_size integer,
     index_read_4_size integer,
-    flow_cell character varying
+    flow_cell character varying,
+    samplesheet_raw text
 );
 
 
@@ -1179,8 +1183,44 @@ ALTER SEQUENCE sam_flagstats_id_seq OWNED BY sam_flagstats.id;
 --
 
 CREATE TABLE schema_migrations (
-    version character varying(255) NOT NULL
+    version character varying NOT NULL
 );
+
+
+--
+-- Name: seqprep_trimming_metrics; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE seqprep_trimming_metrics (
+    id integer NOT NULL,
+    read_group_id integer NOT NULL,
+    num_pairs_processed integer NOT NULL,
+    num_pairs_merged integer NOT NULL,
+    num_pairs_w_adapters integer NOT NULL,
+    num_pairs_discarded integer NOT NULL,
+    frc_pairs_merged double precision NOT NULL,
+    frc_pairs_w_adapters double precision NOT NULL,
+    frc_pairs_discarded double precision NOT NULL
+);
+
+
+--
+-- Name: seqprep_trimming_metrics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE seqprep_trimming_metrics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: seqprep_trimming_metrics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE seqprep_trimming_metrics_id_seq OWNED BY seqprep_trimming_metrics.id;
 
 
 --
@@ -1606,6 +1646,13 @@ ALTER TABLE ONLY sam_flagstats ALTER COLUMN id SET DEFAULT nextval('sam_flagstat
 
 
 --
+-- Name: seqprep_trimming_metrics id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY seqprep_trimming_metrics ALTER COLUMN id SET DEFAULT nextval('seqprep_trimming_metrics_id_seq'::regclass);
+
+
+--
 -- Name: taxon_groups_taxon_ids id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1857,6 +1904,20 @@ ALTER TABLE ONLY sam_flagstats
 
 
 --
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+-- Name: seqprep_trimming_metrics seqprep_trimming_metrics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY seqprep_trimming_metrics
+    ADD CONSTRAINT seqprep_trimming_metrics_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: taxon_groups_taxon_ids taxon_groups_taxon_ids_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1933,6 +1994,20 @@ ALTER TABLE coverage_depths CLUSTER ON in_cov_depth_rg_id;
 
 
 --
+-- Name: in_meth_status_bed_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX in_meth_status_bed_id ON methylation_statuses USING btree (bed_region_id);
+
+
+--
+-- Name: in_meth_status_rgid_brid_cov; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX in_meth_status_rgid_brid_cov ON methylation_statuses USING btree (read_group_id, bed_region_id, total);
+
+
+--
 -- Name: in_rg_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1991,10 +2066,10 @@ CREATE INDEX index_bed_regions_gc ON bed_regions USING btree (frac_gc);
 
 
 --
--- Name: index_bed_regions_on_bed_group_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_bed_regions_on_bed_group_id_and_chr; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_bed_regions_on_bed_group_id ON bed_regions USING btree (bed_group_id);
+CREATE INDEX index_bed_regions_on_bed_group_id_and_chr ON bed_regions USING btree (bed_group_id, chr);
 
 
 --
@@ -2170,6 +2245,13 @@ CREATE INDEX index_rna_seq_avg_transcript_coverages_on_rg_id ON rna_seq_avg_tran
 --
 
 CREATE INDEX index_rna_seq_metrics_on_rg_id ON rna_seq_metrics USING btree (rg_id);
+
+
+--
+-- Name: index_seqprep_trimming_metrics_on_read_group_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_seqprep_trimming_metrics_on_read_group_id ON seqprep_trimming_metrics USING btree (read_group_id);
 
 
 --
@@ -2629,6 +2711,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170426174239'),
 ('20170525151729'),
 ('20170609015028'),
-('20170905002413');
+('20170726111700'),
+('20170809093000'),
+('20170825200305'),
+('20170825200718'),
+('20170829162418'),
+('20170831190724'),
+('20170905002413'),
+('20170906181837');
 
 
