@@ -19,9 +19,7 @@ class ReadGroup < ActiveRecord::Base
 
   accepts_nested_attributes_for :read_group_properties
 
-  validates_presence_of :library
   validates_presence_of :barcode
-  validates_presence_of :sample
 
 
   def property_values=(value)
