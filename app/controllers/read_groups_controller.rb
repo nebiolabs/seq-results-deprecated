@@ -41,7 +41,7 @@ class ReadGroupsController < ApplicationController
   private
 
   def read_group_new_update
-    properties_keys = params['read_group']['properties']&.keys ||[]
+    properties_keys = params['read_group']['property_values']&.keys ||[]
     params.permit( properties: properties_keys)
   end
 
@@ -49,7 +49,7 @@ class ReadGroupsController < ApplicationController
 
   def read_group_params
 
-    properties_keys = params['read_group']['properties']&.keys || []
+    properties_keys = params['read_group']['property_values']&.keys || []
 
 
     params.require(:read_group).permit(:run_id, :genome_id, :project,
@@ -61,7 +61,7 @@ class ReadGroupsController < ApplicationController
       :pcr_extension_deg, :start_library_nm,
       :final_library_pm, :naoh_stock_date,
       :pcr_yield_ng, :pcr_conc_nm, :pcr_volume_ul,
-      :notebook_location, :pre_denaturation_buffer, properties: properties_keys)
+      :notebook_location, :pre_denaturation_buffer, property_values: properties_keys)
   end
 
 
