@@ -42,7 +42,7 @@ class RunsController < ApplicationController
                                 :pr2bottle_part_number,:pr2bottle_expiration_date, :reagent_kit_serial_number,
                                 :reagent_kit_part_number, :reagent_kit_expiration_date,:reagent_kit_version, :run_id,
                                 :scanner_id, :run_number, :fpga_version, :mcs_version, :rta_version, :experiment_name,
-                                :chemistry,:username,:workflow_analysis,:enable_analysis)
+                                :chemistry,:username,:workflow_analysis,:enable_analysis, :samplesheet_raw)
   end
 
 end
