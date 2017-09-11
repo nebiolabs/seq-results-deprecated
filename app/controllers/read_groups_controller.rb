@@ -27,7 +27,6 @@ class ReadGroupsController < ApplicationController
     respond_with ReadGroup.destroy(params[:id])
   end
 
-
   def create
     read_group = ReadGroup.new(read_group_params)
 
@@ -37,7 +36,6 @@ class ReadGroupsController < ApplicationController
 
   end
 
-
   private
 
   def read_group_new_update
@@ -45,15 +43,12 @@ class ReadGroupsController < ApplicationController
     params.permit( properties: properties_keys)
   end
 
-
-
   def read_group_params
 
     properties_keys = params['read_group']['property_values']&.keys || []
 
-
     params.require(:read_group).permit(:run_id, :genome_id, :project,
-      :library, :barcode, :sample, :email, :library_prep_method, :input_ng,
+      :library, :barcode, :sample, :contact_email, :library_prep_method, :input_ng,
       :shearing_method, :avg_insert_size,
       :max_insert_size, :min_insert_size,
       :notes, :pcr_cycles, :pcr_annealing_sec,
@@ -63,6 +58,5 @@ class ReadGroupsController < ApplicationController
       :pcr_yield_ng, :pcr_conc_nm, :pcr_volume_ul,
       :notebook_location, :pre_denaturation_buffer, property_values: properties_keys)
   end
-
 
 end
